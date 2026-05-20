@@ -8,7 +8,7 @@ Built from the cornerstone ideas at [grokipaedia.com/BeyondRSI.html](https://www
 
 Humans remain the irreplaceable coherence anchor. The hybrid network is provably more powerful than pure superintelligence.
 
-## Quick Start (MVP live in <60 seconds)
+## Quick Start
 ```bash
 pip install streamlit
 streamlit run app.py
