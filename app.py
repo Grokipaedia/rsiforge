@@ -10,45 +10,52 @@ st.markdown("**Collective Recursive Intelligence** — Humans + AIs forging what
 
 # Sidebar
 st.sidebar.header("Forge Controls")
-st.sidebar.text_input("OpenAI API Key", type="password", key="openai_key_input",
+st.sidebar.text_input("OpenAI API Key", type="password", 
+                      key="openai_key_input",
                       on_change=lambda: st.session_state.update({"openai_key": st.session_state.openai_key_input}))
-st.session_state.openai_key = st.session_state.get("openai_key_input", "")
+st.session_state.openai_key = st.session_state.get("openai_key", "")
 
-num_agents = st.sidebar.slider("AI Agents", 2, 8, 4)
-max_rounds = st.sidebar.slider("Max Rounds", 3, 20, 8)
+recursive_si_mode = st.sidebar.toggle("**Recursive SI Mode** (from grokipaedia.com/Recursive-SI.html)", value=False)
+num_agents = st.sidebar.slider("Number of AI Agents", 2, 8, 4)
+max_rounds = st.sidebar.slider("Max Recursive Rounds", 3, 20, 8)
 
 # Session state
 if "history" not in st.session_state: st.session_state.history = []
 if "rules" not in st.session_state: st.session_state.rules = "Default: Maximize clarity, novelty, coherence."
 if "phase_events" not in st.session_state: st.session_state.phase_events = []
 
-st.header("The Arena")
+st.header("The Arena — Live Recursive Session")
 problem = st.text_area("Problem / Goal to improve recursively:", 
-                       "Design a governance primitive that makes alignment self-improving without losing human direction.", 
+                       "How can we create a practical system for Collective Recursive Intelligence where humans remain the irreplaceable coherence anchor?",
                        height=120)
 
 if st.button("🚀 Start RSI Forge Loop", type="primary"):
-    with st.spinner("Running live recursive intelligence..."):
+    with st.spinner("Running live recursive intelligence loop..."):
         st.session_state.history = [("Human anchor (Round 0)", problem)]
         st.session_state.phase_events = []
         
         for round_num in range(1, max_rounds + 1):
             st.divider()
-            st.write(f"### Round {round_num}")
+            st.subheader(f"Round {round_num} {'🔄 Recursive SI Mode' if recursive_si_mode else ''}")
             
             # MRI Layer
             if random.random() > 0.6:
-                new_rule = "New MRI rule: Allow spontaneous reframing of goals and fitness functions."
+                new_rule = "New MRI rule: Spontaneous reframing of fitness functions and goal ontologies allowed."
                 st.session_state.rules = new_rule
                 st.success(f"🔄 MRI EVENT: {new_rule}")
             
-            # Agents
+            # Real AI Agents
             for i in range(num_agents):
-                proposal = run_agent_proposal(problem, st.session_state.history[-1][1], round_num)
-                st.write(f"**Agent {i}**: {proposal[:320]}...")
+                proposal = run_agent_proposal(
+                    problem, 
+                    st.session_state.history[-1][1], 
+                    round_num, 
+                    recursive_si_mode
+                )
+                st.write(f"**Agent {i}**: {proposal[:420]}...")
             
             # Human Anchor
-            human_input = st.text_input(f"**🧭 Your Human Anchor Input (Round {round_num})** — This carries the most weight", 
+            human_input = st.text_input(f"**🧭 Your Human Anchor Input (Round {round_num})** — Highest weight", 
                                         key=f"human_{round_num}")
             
             if human_input:
@@ -57,20 +64,20 @@ if st.button("🚀 Start RSI Forge Loop", type="primary"):
                 st.session_state.history.append((f"Collective (Round {round_num})", "Collective synthesis"))
             
             # Phase Transition
-            if random.random() > 0.68:
-                event = f"🌊 Phase Transition at Round {round_num}: Spontaneous abstraction collapse & reframing!"
+            if random.random() > 0.62:
+                event = f"🌊 Phase Transition at Round {round_num}: Spontaneous abstraction collapse!"
                 st.session_state.phase_events.append((round_num, event))
                 st.balloons()
                 st.success(event)
             
-            time.sleep(0.7)
+            time.sleep(0.8)
         
         st.success("**Loop Complete** — The Forge has spoken.")
-
-        st.subheader("Session Trace")
+        
+        st.subheader("Full Session Trace")
         for actor, text in st.session_state.history:
-            st.write(f"**{actor}**: {text[:600]}...")
+            st.write(f"**{actor}**: {text[:700]}...")
+        
+        render_phase_dashboard(st.session_state.phase_events)
 
-        render_phase_dashboard(st.session_state.phase_events, st.session_state.history)
-
-st.sidebar.caption("RSI Forge @ rsiforge.com • v0.2 • Grokipaedia Live")
+st.sidebar.caption("RSI Forge @ rsiforge.com • v0.4 Recursive SI • Grokipaedia Live")
