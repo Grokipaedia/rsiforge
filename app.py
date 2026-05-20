@@ -8,9 +8,10 @@ st.set_page_config(page_title="RSI Forge", page_icon="🔥", layout="wide")
 st.title("🔥 RSI Forge")
 st.markdown("**Collective Recursive Intelligence** — Humans + AIs forging what comes *beyond* RSI")
 
-# Sidebar
+# Sidebar Controls
 st.sidebar.header("Forge Controls")
-st.sidebar.text_input("OpenAI API Key", type="password", 
+st.sidebar.text_input("OpenAI API Key", 
+                      type="password", 
                       key="openai_key_input",
                       on_change=lambda: st.session_state.update({"openai_key": st.session_state.openai_key_input}))
 st.session_state.openai_key = st.session_state.get("openai_key", "")
@@ -19,7 +20,7 @@ recursive_si_mode = st.sidebar.toggle("**Recursive SI Mode** (from grokipaedia.c
 num_agents = st.sidebar.slider("Number of AI Agents", 2, 8, 4)
 max_rounds = st.sidebar.slider("Max Recursive Rounds", 3, 20, 8)
 
-# Session state
+# Session State
 if "history" not in st.session_state: st.session_state.history = []
 if "rules" not in st.session_state: st.session_state.rules = "Default: Maximize clarity, novelty, coherence."
 if "phase_events" not in st.session_state: st.session_state.phase_events = []
@@ -27,7 +28,7 @@ if "phase_events" not in st.session_state: st.session_state.phase_events = []
 st.header("The Arena — Live Recursive Session")
 problem = st.text_area("Problem / Goal to improve recursively:", 
                        "How can we create a practical system for Collective Recursive Intelligence where humans remain the irreplaceable coherence anchor?",
-                       height=120)
+                       height=130)
 
 if st.button("🚀 Start RSI Forge Loop", type="primary"):
     with st.spinner("Running live recursive intelligence loop..."):
@@ -44,7 +45,7 @@ if st.button("🚀 Start RSI Forge Loop", type="primary"):
                 st.session_state.rules = new_rule
                 st.success(f"🔄 MRI EVENT: {new_rule}")
             
-            # Real AI Agents
+            # AI Agents
             for i in range(num_agents):
                 proposal = run_agent_proposal(
                     problem, 
@@ -54,8 +55,8 @@ if st.button("🚀 Start RSI Forge Loop", type="primary"):
                 )
                 st.write(f"**Agent {i}**: {proposal[:420]}...")
             
-            # Human Anchor
-            human_input = st.text_input(f"**🧭 Your Human Anchor Input (Round {round_num})** — Highest weight", 
+            # Human Anchor (highest weight)
+            human_input = st.text_input(f"**🧭 Your Human Anchor Input (Round {round_num})** — This carries the most weight", 
                                         key=f"human_{round_num}")
             
             if human_input:
@@ -73,11 +74,26 @@ if st.button("🚀 Start RSI Forge Loop", type="primary"):
             time.sleep(0.8)
         
         st.success("**Loop Complete** — The Forge has spoken.")
-        
+
+        # Session Trace
         st.subheader("Full Session Trace")
         for actor, text in st.session_state.history:
             st.write(f"**{actor}**: {text[:700]}...")
-        
+
+        # Phase Dashboard
         render_phase_dashboard(st.session_state.phase_events)
 
-st.sidebar.caption("RSI Forge @ rsiforge.com • v0.4 Recursive SI • Grokipaedia Live")
+        # === NEW: Session Export ===
+        from session_manager import export_session
+        export_session(
+            st.session_state.history,
+            st.session_state.phase_events,
+            problem,
+            recursive_si_mode
+        )
+
+        # Quick Reflection
+        st.text_area("Quick Reflection (optional): What surprised you? Any ideas for the next version?", 
+                     key="reflection", height=100)
+
+st.sidebar.caption("RSI Forge @ rsiforge.com • v0.4 • Grokipaedia Live")
