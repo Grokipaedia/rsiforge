@@ -1,6 +1,3 @@
-
-3. Create a new file in the repo called **`app.py`** and paste this **updated, branded MVP** (I’ve already swapped in RSI Forge everywhere and cleaned it up):
-
 ```python
 import streamlit as st
 import time
