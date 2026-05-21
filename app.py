@@ -16,35 +16,45 @@ st.session_state.openai_key = st.session_state.get("openai_key", "")
 
 recursive_si_mode = st.sidebar.toggle("**Recursive SI Mode**", value=True)
 num_agents = st.sidebar.slider("Number of AI Agents", 2, 8, 5)
-max_rounds = st.sidebar.slider("Max Recursive Rounds", 3, 12, 6)
+max_rounds = st.sidebar.slider("Max Recursive Rounds", 3, 10, 6)
 
 st.header("The Arena — Live Recursive Session")
-problem = st.text_area("Problem:", height=100, value="How should we evolve RSI Forge itself in the next 30 days...")
+problem = st.text_area("Problem:", 
+    value="How should we evolve RSI Forge itself in the next 30 days so it becomes a true Collective Recursive Intelligence platform...",
+    height=100)
 
 if st.button("🚀 Start RSI Forge Loop", type="primary"):
-    with st.spinner("Running..."):
+    with st.spinner("Running live recursive intelligence loop..."):
+        if "history" not in st.session_state:
+            st.session_state.history = []
         st.session_state.history = [("Human anchor (Round 0)", problem)]
         st.session_state.phase_events = []
         
         for round_num in range(1, max_rounds + 1):
             st.divider()
-            st.subheader(f"Round {round_num} {'🔄 Recursive SI' if recursive_si_mode else ''}")
+            st.subheader(f"Round {round_num} {'🔄 Recursive SI Mode' if recursive_si_mode else ''}")
             
             # Agents
             for i in range(num_agents):
                 proposal = run_agent_proposal(problem, st.session_state.history[-1][1], round_num, recursive_si_mode)
                 st.write(f"**Agent {i}**: {proposal[:400]}...")
             
-            # Human Anchor - More reliable
-            st.info("🧭 **Paste Human Anchor Prompt Here** (Round " + str(round_num) + ")")
-            human_input = st.text_area("Your input (this is the most important part):", 
-                                       key=f"human_input_{round_num}", height=80)
+            # === Reliable Human Input ===
+            st.info(f"🧭 **Round {round_num} — Human Anchor** (Paste your prompt here)")
+            human_key = f"human_input_{round_num}"
+            if human_key not in st.session_state:
+                st.session_state[human_key] = ""
+            
+            human_input = st.text_area("Your Human Anchor Input:", 
+                                       value=st.session_state[human_key],
+                                       key=human_key,
+                                       height=100)
             
             if human_input.strip():
                 st.session_state.history.append((f"Human anchor (Round {round_num})", human_input))
-                st.success("Human anchor recorded")
+                st.success("✅ Human anchor recorded")
             else:
-                st.session_state.history.append((f"Collective (Round {round_num})", "No human input this round"))
+                st.session_state.history.append((f"Collective (Round {round_num})", "No human input"))
             
             # Phase Transition
             if random.random() > 0.65:
@@ -53,16 +63,17 @@ if st.button("🚀 Start RSI Forge Loop", type="primary"):
                 st.balloons()
                 st.success(event)
             
-            time.sleep(0.7)
+            time.sleep(0.8)
         
-        st.success("Loop Complete")
+        st.success("**Loop Complete** — The Forge has spoken.")
 
-        st.subheader("Session Trace")
+        st.subheader("Full Session Trace")
         for actor, text in st.session_state.history:
-            st.write(f"**{actor}**: {text[:600]}...")
+            st.write(f"**{actor}**: {text[:700]}...")
 
         render_phase_dashboard(st.session_state.phase_events)
+
         from session_manager import export_session
         export_session(st.session_state.history, st.session_state.phase_events, problem, recursive_si_mode)
 
-st.sidebar.caption("RSI Forge @ rsiforge.com • v0.5.1 • Improved Human Input")
+st.sidebar.caption("RSI Forge @ rsiforge.com • v0.5.2 • Fixed Human Input Handling")
