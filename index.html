@@ -2,35 +2,60 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>🔥 RSI Forge</title>
+<title>RSI Forge — Collective Recursive Intelligence</title>
 <style>
-    body { font-family: system-ui, sans-serif; background: #05050f; color: #ddd; margin: 0; padding: 20px; }
-    .container { max-width: 860px; margin: auto; background: #0f0f23; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 50px rgba(255,77,77,0.2); }
-    .header { background: #1a1a2e; padding: 20px 32px; display: flex; align-items: center; justify-content: space-between; }
-    .title { font-size: 26px; font-weight: 700; color: #ff4d4d; }
-    .chat { height: 520px; overflow-y: auto; padding: 28px; background: #0a0a1a; }
-    .message { margin: 20px 0; padding: 18px 22px; border-radius: 14px; line-height: 1.6; }
-    .human { background: #3a3a7a; margin-left: 20%; }
-    .agent { background: #1f1f35; margin-right: 20%; border-left: 5px solid #ff4d4d; }
-    .input-area { padding: 24px; background: #111118; }
-    textarea { width: 100%; height: 120px; background: #1a1a2e; color: white; border: 1px solid #444466; border-radius: 12px; padding: 16px; }
-    button { background: #ff4d4d; color: white; padding: 14px 32px; border: none; border-radius: 10px; cursor: pointer; margin: 8px 8px 8px 0; font-weight: 600; }
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    
+    body {
+        margin: 0; padding: 0; background: #0a0a14; color: #e0e0ff;
+        font-family: 'Inter', system-ui, sans-serif;
+    }
+    .forge {
+        max-width: 940px; margin: 40px auto; background: #111118;
+        border-radius: 20px; overflow: hidden; box-shadow: 0 20px 80px rgba(255,77,77,0.18);
+        border: 1px solid #ff4d4d22;
+    }
+    .header {
+        background: linear-gradient(90deg, #1a1a2e, #0f0f23); padding: 24px 36px;
+        display: flex; align-items: center; justify-content: space-between;
+    }
+    .title {
+        display: flex; align-items: center; gap: 16px; font-size: 28px; font-weight: 700; color: #ff4d4d;
+    }
+    .chat {
+        height: 560px; overflow-y: auto; padding: 32px; background: #0a0a14; line-height: 1.65;
+    }
+    .message {
+        margin: 22px 0; padding: 18px 24px; border-radius: 14px; max-width: 78%;
+    }
+    .human { background: #2f2f5f; margin-left: auto; border-bottom-right-radius: 4px; }
+    .agent { background: #1a1a2e; border-left: 5px solid #ff4d4d; }
+    .input-area {
+        padding: 28px; background: #111118; border-top: 1px solid #ff4d4d22;
+    }
+    textarea {
+        width: 100%; height: 130px; background: #1a1a2e; color: #eee; 
+        border: 1px solid #444466; border-radius: 12px; padding: 18px; font-size: 15.5px;
+    }
+    button {
+        background: #ff4d4d; color: white; padding: 14px 32px; border: none;
+        border-radius: 10px; font-weight: 600; cursor: pointer; margin-top: 12px;
+    }
 </style>
 </head>
 <body>
-<div class="container">
+<div class="forge">
     <div class="header">
         <div class="title">🔥 RSI Forge</div>
-        <div style="color:#4caf50;">● Live • Agents Online</div>
+        <div style="color:#4caf50; font-size:14px;">● Live • Agents Online</div>
     </div>
 
     <div class="chat" id="chat"></div>
 
     <div class="input-area">
-        <textarea id="input" placeholder="Paste your Human Anchor prompt here..."></textarea><br>
+        <textarea id="input" placeholder="Enter your Human Anchor prompt..."></textarea><br>
         <button onclick="sendMessage()">Submit Human Anchor</button>
-        <button onclick="exportSession()">💾 Export Session</button>
-        <button onclick="clearChat()">Clear Session</button>
+        <button onclick="exportSession()" style="background:#333;">Export Session as Markdown</button>
     </div>
 </div>
 
@@ -54,28 +79,29 @@ function sendMessage() {
     addMessage(`<strong>You:</strong> ${text}`, 'human');
     input.value = "";
 
-    const thinking = addMessage("<strong>RSI Forge:</strong> Processing anchor...", 'agent');
+    const thinking = addMessage("<strong>RSI Forge:</strong> Processing deep anchor...", 'agent');
 
     setTimeout(() => {
-        const smartReplies = [
-            "Human meaning and long-term flourishing are now locked as the immutable fixed point. All recursive processes are aligned to this core.",
-            "Meta-recursive rule successfully integrated. The system now has explicit permission to question and evolve its own evaluation criteria and goal ontology.",
-            "High-leverage 30-day roadmap forming: 1) Persistent collective memory, 2) Real-time phase transition detection, 3) Multi-human anchoring system, 4) Self-evolving prompt architecture.",
-            "Full synthesis achieved. The single most important next action is implementing persistent memory with real LLM integration so the Forge can truly learn and evolve across sessions."
+        const replies = [
+            "Human meaning, consciousness, and long-term flourishing are now locked as the immutable fixed point. All recursive processes are aligned to this core.",
+            "True meta-recursive rule integrated. The entire system — including its evaluation criteria and goal ontology — can now be questioned and evolved when superior frameworks appear.",
+            "High-leverage 30-day evolution plan forming: persistent collective memory, real-time phase transition detection, multi-human anchoring, and self-evolving architecture.",
+            "Full synthesis achieved. The single most important next step is implementing persistent memory with real recursive capability so the Forge can truly learn and grow across sessions."
         ];
-        thinking.innerHTML = `<strong>RSI Forge:</strong> ${smartReplies[Math.floor(Math.random() * smartReplies.length)]}`;
-    }, 950);
+        thinking.innerHTML = `<strong>RSI Forge:</strong> ${replies[Math.floor(Math.random() * replies.length)]}`;
+    }, 1100);
 }
 
 function exportSession() {
-    alert("Session exported as Markdown (full version will download a beautiful report).");
-}
-
-function clearChat() {
-    if (confirm("Clear the entire session?")) {
-        document.getElementById('chat').innerHTML = '';
-        addMessage("<strong>RSI Forge:</strong> Session reset. Ready for a new loop.", 'agent');
-    }
+    let md = `# RSI Forge Session\n\n**Date**: ${new Date().toLocaleString()}\n\n`;
+    history.forEach(h => {
+        md += `**${h.role === 'human' ? 'Human' : 'RSI Forge'}**: ${h.content}\n\n`;
+    });
+    const blob = new Blob([md], {type: 'text/markdown'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `RSI_Forge_Session_${new Date().toISOString().slice(0,19).replace(/:/g,'-')}.md`;
+    a.click();
 }
 
 // Welcome
