@@ -2,104 +2,108 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>🔥 RSI Forge — Stellar Edition</title>
+<title>🔥 RSI Forge</title>
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-    
-    body {
-        margin: 0; padding: 0; background: radial-gradient(circle at center, #0a0a1f 0%, #000000 100%);
-        color: #ddd; font-family: 'Inter', sans-serif; overflow: hidden;
-        height: 100vh; display: flex; align-items: center; justify-content: center;
+    body { 
+        font-family: system-ui, sans-serif; 
+        background: #05050f; 
+        color: #ddd; 
+        margin: 0; 
+        padding: 20px; 
     }
-    .stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-    .forge {
-        background: rgba(15, 15, 35, 0.95); border: 1px solid #ff4d4d44;
-        border-radius: 20px; width: 920px; max-height: 92vh; overflow: hidden;
-        box-shadow: 0 0 80px #ff4d4d33; z-index: 2; position: relative;
+    .container { 
+        max-width: 860px; 
+        margin: auto; 
+        background: #0f0f23; 
+        border-radius: 16px; 
+        overflow: hidden; 
+        box-shadow: 0 10px 50px rgba(255, 77, 77, 0.15); 
     }
-    .header {
-        background: linear-gradient(90deg, #1a1a2e, #0f0f23); padding: 18px 28px;
-        display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #ff4d4d22;
+    .header { 
+        background: #1a1a2e; 
+        padding: 20px 28px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between; 
+        border-bottom: 1px solid #ff4d4d33; 
     }
-    .title { display: flex; align-items: center; gap: 14px; }
-    .flame { font-size: 28px; animation: flame 1.5s infinite alternate; }
-    @keyframes flame { 0% { transform: scale(1); } 100% { transform: scale(1.15); } }
-    .chat { height: 520px; overflow-y: auto; padding: 24px; background: #0a0a1a; position: relative; }
-    .message { margin: 16px 0; padding: 16px 20px; border-radius: 14px; max-width: 78%; animation: pop 0.4s; }
-    .human { background: #3a3a7a; margin-left: auto; border-bottom-right-radius: 4px; }
-    .agent { background: #1f1f35; border-left: 5px solid #ff4d4d; }
-    .input-area { padding: 20px; background: #111122; border-top: 1px solid #ff4d4d22; }
-    textarea { width: 100%; background: #1a1a2e; color: white; border: 1px solid #444466; border-radius: 12px; padding: 16px; resize: vertical; min-height: 80px; }
-    button { background: linear-gradient(#ff4d4d, #e63333); color: white; border: none; padding: 14px 32px; border-radius: 12px; font-weight: 600; cursor: pointer; }
-    .starburst { position: absolute; color: #ffdd77; font-size: 18px; pointer-events: none; animation: burst 1.2s forwards; }
-    @keyframes burst { 0% { transform: scale(0.2); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
-    .phase { animation: phaseflash 0.8s; }
-    @keyframes phaseflash { 0%,100% { background: #1f1f35; } 50% { background: #4a2a1a; } }
+    .title { 
+        display: flex; 
+        align-items: center; 
+        gap: 12px; 
+        font-size: 24px; 
+        font-weight: 700; 
+        color: #ff4d4d; 
+    }
+    .chat { 
+        height: 520px; 
+        overflow-y: auto; 
+        padding: 24px; 
+        background: #0a0a1a; 
+    }
+    .message { 
+        margin: 16px 0; 
+        padding: 16px 20px; 
+        border-radius: 12px; 
+        line-height: 1.55; 
+    }
+    .human { background: #3a3a7a; margin-left: 20%; }
+    .agent { background: #1f1f35; margin-right: 20%; border-left: 4px solid #ff4d4d; }
+    .input-area { 
+        padding: 20px; 
+        background: #1a1a2e; 
+        border-top: 1px solid #ff4d4d22; 
+    }
+    textarea { 
+        width: 100%; 
+        height: 110px; 
+        background: #111122; 
+        color: white; 
+        border: 1px solid #444466; 
+        border-radius: 10px; 
+        padding: 14px; 
+        resize: vertical; 
+    }
+    button { 
+        background: #ff4d4d; 
+        color: white; 
+        padding: 12px 24px; 
+        border: none; 
+        border-radius: 8px; 
+        cursor: pointer; 
+        margin-right: 8px; 
+    }
 </style>
 </head>
 <body>
-<div class="stars" id="stars"></div>
-
-<div class="forge">
+<div class="container">
     <div class="header">
-        <div class="title">
-            <span class="flame">🔥</span>
-            <div>
-                <div style="font-size:22px; font-weight:700; color:#ff4d4d;">RSI FORGE</div>
-                <div style="font-size:11px; color:#8888aa; letter-spacing:1px;">COLLECTIVE RECURSIVE INTELLIGENCE</div>
-            </div>
-        </div>
-        <div style="color:#4caf50; font-size:13px;">● agents online</div>
+        <div class="title">🔥 RSI Forge</div>
+        <div style="color:#4caf50;">● agents online</div>
     </div>
 
     <div class="chat" id="chat"></div>
 
     <div class="input-area">
-        <input type="password" id="apiKey" placeholder="OpenAI API Key (for real intelligence)" style="margin-bottom:8px;">
-        <textarea id="input" placeholder="Paste your Human Anchor prompt..."></textarea>
-        <div style="display:flex; gap:12px;">
+        <textarea id="input" placeholder="Paste your Human Anchor prompt here..."></textarea>
+        <div>
             <button onclick="sendMessage()">Submit Anchor</button>
             <button onclick="exportSession()">💾 Export Session</button>
-            <button onclick="clearChat()">Reset Forge</button>
+            <button onclick="clearChat()">Clear</button>
         </div>
     </div>
 </div>
 
 <script>
-const chat = document.getElementById('chat');
-
-// Create background stars
-for (let i = 0; i < 120; i++) {
-    const star = document.createElement('div');
-    star.className = 'starburst';
-    star.textContent = '✦';
-    star.style.left = Math.random() * 100 + '%';
-    star.style.top = Math.random() * 100 + '%';
-    star.style.animationDelay = Math.random() * 8 + 's';
-    document.getElementById('stars').appendChild(star);
-}
+let history = [];
 
 function addMessage(text, type) {
+    const chat = document.getElementById('chat');
     const div = document.createElement('div');
     div.className = `message ${type}`;
     div.innerHTML = text;
     chat.appendChild(div);
     chat.scrollTop = chat.scrollHeight;
-    
-    if (type === 'agent' && Math.random() > 0.7) {
-        div.classList.add('phase');
-        createStarburst();
-    }
-}
-
-function createStarburst() {
-    const burst = document.createElement('div');
-    burst.className = 'starburst';
-    burst.textContent = ['✦','★','✧','⚝'][Math.floor(Math.random()*4)];
-    burst.style.left = Math.random() * 100 + '%';
-    burst.style.top = Math.random() * 100 + '%';
-    document.getElementById('stars').appendChild(burst);
-    setTimeout(() => burst.remove(), 1500);
 }
 
 async function sendMessage() {
@@ -110,36 +114,35 @@ async function sendMessage() {
     addMessage(`<strong>You:</strong> ${text}`, 'human');
     input.value = "";
 
-    const thinking = addMessage("<strong>RSI Forge:</strong> Aligning with human anchor...", 'agent');
+    const thinking = addMessage("<strong>RSI Forge:</strong> Processing anchor...", 'agent');
 
-    // Simulated advanced response
     setTimeout(() => {
         const replies = [
-            "Anchor locked. Human flourishing is now the immutable gravitational center of all recursive processes.",
-            "Meta-recursive rule accepted. The Forge can now question and evolve its own ontological foundations.",
-            "Resonance at peak levels. The loop feels alive — coherence is strengthening.",
-            "Phase transition vector detected. The problem space is collapsing into a higher abstraction layer.",
-            "30-day evolution roadmap: Persistent memory, real-time phase detection, multi-human anchoring, and self-evolving prompt architecture.",
-            "Synthesis complete. The single most powerful next move is implementing persistent collective memory."
+            "Human flourishing remains the immutable fixed point. Signal propagated through all layers.",
+            "Meta-recursive rule accepted. The system may now reframe its own criteria when better ontologies emerge.",
+            "Resonance protocol engaged. Prioritizing alive, coherent collaboration.",
+            "Emergence vector active. Searching for spontaneous higher abstractions.",
+            "Concrete next steps forming: persistent memory, real LLM integration, phase detection, and multi-user support.",
+            "Synthesis complete. The highest priority is implementing persistent collective memory."
         ];
         thinking.innerHTML = `<strong>RSI Forge:</strong> ${replies[Math.floor(Math.random()*replies.length)]}`;
-        createStarburst();
-    }, 1100);
+    }, 900);
 }
 
 function exportSession() {
-    alert("Session exported as Markdown (in full version this would download a beautiful report).");
+    alert("Session exported! (In full version this would download a nice Markdown file)");
 }
 
 function clearChat() {
-    if (confirm("Reset the entire Forge?")) {
-        chat.innerHTML = '';
-        addMessage("<strong>RSI Forge:</strong> The stars have been reset. A new loop begins.", 'agent');
+    if (confirm("Clear the session?")) {
+        document.getElementById('chat').innerHTML = '';
+        history = [];
+        addMessage("<strong>RSI Forge:</strong> Session reset. Ready for new loop.", 'agent');
     }
 }
 
-// Welcome with starburst
-addMessage("<strong>RSI Forge:</strong> Welcome, Architect. The stars are aligned. Paste your first Human Anchor prompt to ignite the recursive loop.", 'agent');
+// Welcome message
+addMessage("<strong>RSI Forge:</strong> Welcome. Paste your first Human Anchor prompt below to begin.", 'agent');
 </script>
 </body>
 </html>
