@@ -4,55 +4,88 @@
 <meta charset="UTF-8">
 <title>🔥 RSI Forge</title>
 <style>
-    body { font-family: Arial, sans-serif; background: #07071a; color: #ddd; margin: 0; padding: 20px; }
-    .container { max-width: 800px; margin: auto; }
-    h1 { color: #ff4d4d; text-align: center; }
-    .chat { background: #1a1a2e; padding: 20px; border-radius: 12px; height: 65vh; overflow-y: auto; margin-bottom: 15px; }
-    .message { margin: 15px 0; padding: 14px; border-radius: 10px; }
-    .human { background: #4a4a8a; margin-left: 20%; }
-    .agent { background: #2a2a4a; margin-right: 20%; }
-    textarea { width: 100%; height: 110px; background: #1e1e2e; color: white; border: 1px solid #3a3a5a; border-radius: 8px; padding: 12px; }
-    button { background: #ff4d4d; color: white; padding: 14px 28px; font-size: 16px; border: none; border-radius: 8px; cursor: pointer; }
+    body { font-family: system-ui, sans-serif; background: #05050f; color: #ddd; margin: 0; padding: 20px; }
+    .container { max-width: 820px; margin: auto; }
+    h1 { color: #ff4d4d; text-align: center; margin-bottom: 8px; }
+    .tagline { text-align: center; color: #8888aa; margin-bottom: 30px; }
+    .chat { background: #0f0f23; padding: 24px; border-radius: 16px; height: 62vh; overflow-y: auto; margin-bottom: 20px; }
+    .message { margin: 18px 0; padding: 16px; border-radius: 12px; line-height: 1.5; }
+    .human { background: #3a3a7a; margin-left: 15%; }
+    .agent { background: #1f1f35; margin-right: 15%; border-left: 4px solid #ff4d4d; }
+    .input-area { background: #1a1a2e; padding: 20px; border-radius: 12px; }
+    textarea { width: 100%; height: 110px; background: #111122; color: white; border: 1px solid #444466; border-radius: 10px; padding: 14px; resize: vertical; }
+    button { background: #ff4d4d; color: white; padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; font-size: 15px; }
+    .feedback { font-size: 12px; color: #8888aa; margin-top: 8px; }
 </style>
 </head>
 <body>
 <div class="container">
     <h1>🔥 RSI Forge</h1>
-    <p style="text-align:center">Collective Recursive Intelligence • Human in the Loop</p>
-    
+    <p class="tagline">Collective Recursive Intelligence • Human in the Loop</p>
+
     <div class="chat" id="chat"></div>
-    
-    <textarea id="input" placeholder="Paste your Human Anchor prompt here..."></textarea><br><br>
-    <button onclick="sendMessage()">Submit Human Anchor Input</button>
+
+    <div class="input-area">
+        <textarea id="problem" placeholder="Initial Problem / Goal (optional)"></textarea>
+        <textarea id="input" placeholder="Human Anchor Input..."></textarea><br>
+        <button onclick="sendMessage()">Submit Anchor</button>
+        <button onclick="clearChat()" style="background:#444;">Clear Session</button>
+    </div>
 </div>
 
 <script>
-const responses = [
-    "Understood. Maintaining human flourishing as the immutable fixed point while propagating your anchor through all recursive layers.",
-    "MRI rule integrated. The system now has explicit permission to reframe its own fitness functions when superior ontologies emerge.",
-    "Resonance protocol activated. Prioritizing alive, coherent collaboration over mechanical efficiency. Human signal strongly amplified.",
-    "Emergence vector detected. Searching for opportunities to dissolve the original problem into higher-order abstractions.",
-    "Concrete evolution path proposed: 1) Persistent session memory, 2) Smart phase transition detection, 3) Exportable case studies, 4) Multi-user anchoring.",
-    "Synthesis complete. The single most important next step is to implement persistent memory and real LLM integration so the Forge can actually learn from each loop."
-];
+const chat = document.getElementById('chat');
+
+function addMessage(text, type) {
+    const div = document.createElement('div');
+    div.className = `message ${type}`;
+    div.innerHTML = text;
+    chat.appendChild(div);
+    chat.scrollTop = chat.scrollHeight;
+}
 
 function sendMessage() {
-    const text = document.getElementById("input").value.trim();
+    const input = document.getElementById('input');
+    const text = input.value.trim();
     if (!text) return;
-    
-    const chat = document.getElementById("chat");
-    chat.innerHTML += `<div class="message human"><strong>You:</strong> ${text}</div>`;
-    document.getElementById("input").value = "";
-    
+
+    addMessage(`<strong>You:</strong> ${text}`, 'human');
+    input.value = '';
+
+    // Simulate thoughtful response
     setTimeout(() => {
+        const responses = [
+            "Anchor received and integrated. Human flourishing remains the immutable fixed point.",
+            "MRI layer activated. System now has permission to reframe its own criteria when superior ontologies appear.",
+            "Resonance increased. Prioritizing coherent, alive collaboration over pure optimization.",
+            "Emergence protocol engaged. Searching for spontaneous reframing and higher abstraction opportunities.",
+            "Concrete evolution path forming: Persistent memory, smart phase detection, exportable case studies, and multi-user anchoring are high priority.",
+            "Synthesis complete. The single most important next step is implementing persistent memory + real LLM integration."
+        ];
         const response = responses[Math.floor(Math.random() * responses.length)];
-        chat.innerHTML += `<div class="message agent"><strong>RSI Forge:</strong> ${response}</div>`;
-        chat.scrollTop = chat.scrollHeight;
+        addMessage(`<strong>RSI Forge:</strong> ${response}`, 'agent');
+
+        // Feedback option
+        const feedback = document.createElement('div');
+        feedback.className = 'feedback';
+        feedback.innerHTML = `<button onclick="giveFeedback(this)">👍 Useful</button> <button onclick="giveFeedback(this)">👎 Needs improvement</button>`;
+        chat.lastChild.appendChild(feedback);
     }, 900);
 }
 
+function giveFeedback(btn) {
+    btn.parentElement.innerHTML = "✅ Feedback recorded. Thank you.";
+}
+
+function clearChat() {
+    if (confirm("Clear the entire session?")) {
+        chat.innerHTML = '';
+        addMessage("<strong>RSI Forge:</strong> Session cleared. Ready for new loop.", 'agent');
+    }
+}
+
 // Welcome
-document.getElementById("chat").innerHTML = `<div class="message agent"><strong>RSI Forge:</strong> Welcome. Paste your first Human Anchor prompt to begin the recursive loop.</div>`;
+addMessage("<strong>RSI Forge:</strong> Welcome. Enter your initial problem (optional) and begin with your first Human Anchor prompt.", 'agent');
 </script>
 </body>
 </html>
