@@ -12,7 +12,6 @@
     .message { margin: 18px 0; padding: 16px; border-radius: 12px; line-height: 1.5; }
     .human { background: #3a3a7a; margin-left: 15%; }
     .agent { background: #1f1f35; margin-right: 15%; border-left: 4px solid #ff4d4d; }
-    .input-area { background: #1a1a2e; padding: 20px; border-radius: 12px; }
     textarea { width: 100%; background: #111122; color: white; border: 1px solid #444466; border-radius: 10px; padding: 14px; resize: vertical; }
     button { background: #ff4d4d; color: white; padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; margin: 5px; }
 </style>
@@ -25,7 +24,7 @@
     <div class="chat" id="chat"></div>
 
     <div class="input-area">
-        <textarea id="input" placeholder="Paste your Human Anchor prompt here..." rows="4"></textarea><br>
+        <textarea id="input" placeholder="Human Anchor Input..." rows="4"></textarea><br>
         <button onclick="sendMessage()">Submit Anchor</button>
         <button onclick="exportSession()">💾 Export Session</button>
         <button onclick="clearChat()">Clear</button>
@@ -44,6 +43,15 @@ function addMessage(text, type) {
     chat.scrollTop = chat.scrollHeight;
 }
 
+const contextualResponses = [
+    "Understood. Human flourishing locked as the immutable fixed point. Propagating through all layers.",
+    "Meta-recursive rule accepted. The Forge now has explicit permission to reframe its own criteria when superior ontologies appear.",
+    "Resonance protocol active. Prioritizing coherent, alive collaboration over raw efficiency.",
+    "Emergence vector engaged. Looking for opportunities to dissolve the problem into higher abstractions.",
+    "Concrete 30-day roadmap forming: persistent memory, smart phase detection, exportable case studies, and multi-user anchoring.",
+    "Full synthesis: The highest-leverage next step is implementing persistent memory + real LLM integration so the Forge can truly learn."
+];
+
 function sendMessage() {
     const input = document.getElementById('input');
     const text = input.value.trim();
@@ -54,18 +62,10 @@ function sendMessage() {
     input.value = "";
 
     setTimeout(() => {
-        const smartResponses = [
-            "Anchor deeply received. Human flourishing remains the immutable core.",
-            "MRI layer engaged. System now authorized to reframe its own rules when superior ontologies appear.",
-            "Resonance high. Prioritizing alive, coherent collaboration over mechanical optimization.",
-            "Emergence vector active. Looking for dissolution and spontaneous higher abstraction.",
-            "Concrete 30-day proposal forming: persistent memory, smart phase detection, session export, and multi-user anchoring.",
-            "Full synthesis complete. The single highest-leverage next step is implementing persistent memory + real LLM integration."
-        ];
-        const response = smartResponses[Math.floor(Math.random() * smartResponses.length)];
+        const response = contextualResponses[Math.floor(Math.random() * contextualResponses.length)];
         addMessage(`<strong>RSI Forge:</strong> ${response}`, 'agent');
         history.push({role: "agent", content: response});
-    }, 900);
+    }, 800);
 }
 
 function exportSession() {
@@ -73,17 +73,15 @@ function exportSession() {
     history.forEach(h => {
         md += `**${h.role === 'human' ? 'Human' : 'RSI Forge'}**: ${h.content}\n\n`;
     });
-
     const blob = new Blob([md], {type: 'text/markdown'});
-    const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url;
+    a.href = URL.createObjectURL(blob);
     a.download = `RSI_Forge_Session_${new Date().toISOString().slice(0,19).replace(/:/g,'-')}.md`;
     a.click();
 }
 
 function clearChat() {
-    if (confirm("Clear the entire session?")) {
+    if (confirm("Clear session?")) {
         document.getElementById('chat').innerHTML = '';
         history = [];
         addMessage("<strong>RSI Forge:</strong> Session cleared. Ready for new loop.", 'agent');
@@ -91,7 +89,7 @@ function clearChat() {
 }
 
 // Welcome
-addMessage("<strong>RSI Forge:</strong> Welcome. Paste your first Human Anchor prompt to begin.", 'agent');
+addMessage("<strong>RSI Forge:</strong> Welcome. Paste your first Human Anchor prompt to begin the recursive loop.", 'agent');
 </script>
 </body>
 </html>
