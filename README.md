@@ -8,15 +8,19 @@ MRI → CRI → Cognitive Phase Transitions
 
 ---
 
-## Architecture
+## RSI Forge System Preview
 
-![RSI Forge Architecture](docs/rsiforge-architecture.png)
+![RSI Forge System](docs1/rsiforge-system.png)
+
+---
+
+## Architecture
 
 RSI Forge is an experimental framework for orchestrating recursive improvement loops across humans, AI agents, memory systems, and governance constraints.
 
 Humans remain the irreplaceable coherence anchor.
 
-Hybrid intelligence may surpass isolated superintelligence through coherence, diversity, and recursive coordination.
+Hybrid recursive intelligence may surpass isolated superintelligence through coherence, diversity, and distributed cognition.
 
 ---
 
@@ -26,9 +30,31 @@ See [SYSTEM_DYNAMICS.md](SYSTEM_DYNAMICS.md)
 
 ---
 
-## Live Preview
+## Core Thesis
 
-![RSI Forge Demo](docs/rsiforge-demo.gif)
+RSI Forge explores the hypothesis that recursively coordinated human-AI systems may evolve capabilities unavailable to isolated intelligence systems alone.
+
+The project investigates:
+
+- Collective Recursive Intelligence (CRI)
+- Cognitive phase transitions
+- Human coherence anchoring
+- Recursive agent coordination
+- Governance-constrained self-improvement
+- Intent Bound Authorization (IBA)
+
+---
+
+## Current Status
+
+RSI Forge is an experimental research prototype exploring:
+
+- Recursive coordination loops
+- Hybrid human-agent cognition
+- Collective intelligence emergence
+- Governance-constrained self-improvement
+
+Early public testbed release in progress.
 
 ---
 
@@ -44,23 +70,37 @@ streamlit run app.py
 
 ---
 
-## Core Thesis
+## Repository Structure
 
-RSI Forge explores the hypothesis that recursively coordinated
-human-AI systems may evolve capabilities unavailable to isolated intelligence systems alone.
-
-The project investigates:
-- Collective Recursive Intelligence (CRI)
-- Cognitive phase transitions
-- Human coherence anchoring
-- Recursive agent coordination
-- Governance-constrained self-improvement
-- Intent Bound Authorization (IBA)
+```text
+rsiforge/
+│
+├── README.md
+├── SYSTEM_DYNAMICS.md
+├── requirements.txt
+│
+├── docs1/
+│   └── rsiforge-system.png
+```
 
 ---
 
-Built from the cornerstone ideas at:
+## Built From
 
-grokipaedia.com/BeyondRSI.html
+The foundational concepts behind RSI Forge are explored at:
 
-rsiforge.com — deploying soon
+- grokipaedia.com/BeyondRSI.html
+
+---
+
+## Vision
+
+RSI Forge investigates whether recursively coordinated hybrid intelligence networks can achieve forms of cognition, adaptation, and coherence unavailable to isolated systems alone.
+
+The long-term hypothesis:
+
+collective recursive intelligence may represent a post-RSI evolutionary pathway beyond conventional models of superintelligence.
+
+---
+
+rsiforge.com — deployed
