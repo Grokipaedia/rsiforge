@@ -1,3 +1,7 @@
+![Status](https://img.shields.io/badge/status-experimental-blue)
+![Stage](https://img.shields.io/badge/stage-research-purple)
+![Interface](https://img.shields.io/badge/interface-streamlit-red)
+![License](https://img.shields.io/badge/license-MIT-green)
 # RSI Forge
 
 ## Collective Recursive Intelligence Forge
