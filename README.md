@@ -6,6 +6,8 @@
 
 ## Collective Recursive Intelligence Forge
 
+> Humans remain the irreplaceable coherence anchor.
+
 The public testbed for post-RSI intelligence.
 
 MRI → CRI → Cognitive Phase Transitions
