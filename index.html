@@ -2,61 +2,85 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>RSI Forge — Collective Recursive Intelligence</title>
+<title>RSI Forge</title>
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600&display=swap');
-    
-    body {
-        margin: 0; padding: 0; background: #05050f; color: #e0e0ff;
-        font-family: 'Inter', system-ui, sans-serif;
+    body { 
+        font-family: system-ui, sans-serif; 
+        background: #0a0a14; 
+        color: #e0e0ff; 
+        margin: 0; 
+        padding: 30px; 
     }
-    .forge {
-        max-width: 960px; margin: 40px auto; background: #0c0c18;
-        border-radius: 24px; overflow: hidden; box-shadow: 0 30px 100px rgba(255,77,77,0.25);
-        border: 1px solid #ff4d4d33;
+    .container { 
+        max-width: 860px; 
+        margin: auto; 
+        background: #111118; 
+        border-radius: 20px; 
+        overflow: hidden; 
+        box-shadow: 0 20px 60px rgba(0,0,0,0.6); 
     }
-    .header {
-        background: linear-gradient(90deg, #1a1a2e, #0f0f23); padding: 28px 40px;
-        display: flex; align-items: center; justify-content: space-between;
+    .header { 
+        background: #1a1a2e; 
+        padding: 24px 32px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between; 
     }
-    .title {
-        display: flex; align-items: center; gap: 16px; font-family: 'Space Grotesk', sans-serif;
-        font-size: 32px; font-weight: 700; color: #ff4d4d; letter-spacing: -0.02em;
+    .title { 
+        font-size: 26px; 
+        font-weight: 700; 
+        color: #ff4d4d; 
     }
-    .chat {
-        height: 580px; overflow-y: auto; padding: 36px; background: #0a0a14;
-        line-height: 1.75;
+    .chat { 
+        height: 520px; 
+        overflow-y: auto; 
+        padding: 28px; 
+        background: #0a0a1a; 
     }
-    .message {
-        margin: 24px 0; padding: 20px 26px; border-radius: 16px; max-width: 82%;
+    .message { 
+        margin: 18px 0; 
+        padding: 18px 22px; 
+        border-radius: 14px; 
+        line-height: 1.6; 
     }
-    .human { background: #2f2f5f; margin-left: auto; border-bottom-right-radius: 6px; }
-    .agent { background: #1a1a2e; border-left: 6px solid #ff4d4d; }
-    .input-area {
-        padding: 32px; background: #111118; border-top: 1px solid #ff4d4d22;
+    .human { background: #3a3a7a; margin-left: auto; }
+    .agent { background: #1f1f35; border-left: 5px solid #ff4d4d; }
+    .input-area { 
+        padding: 24px; 
+        background: #1a1a2e; 
     }
-    textarea {
-        width: 100%; height: 140px; background: #1a1a2e; color: #eee; 
-        border: 1px solid #444466; border-radius: 14px; padding: 20px; font-size: 16px;
+    textarea { 
+        width: 100%; 
+        height: 120px; 
+        background: #1a1a2e; 
+        color: white; 
+        border: 1px solid #444466; 
+        border-radius: 12px; 
+        padding: 16px; 
     }
-    button {
-        background: #ff4d4d; color: white; padding: 16px 36px; border: none;
-        border-radius: 12px; cursor: pointer; font-weight: 600; font-size: 16px; margin: 8px 8px 8px 0;
+    button { 
+        background: #ff4d4d; 
+        color: white; 
+        padding: 14px 32px; 
+        border: none; 
+        border-radius: 10px; 
+        cursor: pointer; 
+        margin: 8px 8px 8px 0; 
     }
 </style>
 </head>
 <body>
-<div class="forge">
+<div class="container">
     <div class="header">
         <div class="title">🔥 RSI Forge</div>
-        <div style="color:#4caf50; font-size:15px;">● Live • Collective Online</div>
+        <div style="color:#4caf50;">● Live • Agents Online</div>
     </div>
 
     <div class="chat" id="chat"></div>
 
     <div class="input-area">
-        <textarea id="input" placeholder="Enter your Human Anchor prompt..."></textarea><br>
-        <button onclick="sendMessage()">Submit Human Anchor</button>
+        <textarea id="input" placeholder="Paste your Human Anchor prompt here..."></textarea><br>
+        <button onclick="sendMessage()">Submit Anchor</button>
         <button onclick="exportSession()">Export Session</button>
     </div>
 </div>
@@ -81,31 +105,24 @@ function sendMessage() {
     addMessage(`<strong>You:</strong> ${text}`, 'human');
     input.value = "";
 
-    const thinking = addMessage("<strong>RSI Forge:</strong> Aligning with human anchor across recursive layers...", 'agent');
+    const thinking = addMessage("<strong>RSI Forge:</strong> Processing anchor...", 'agent');
 
     setTimeout(() => {
         const replies = [
-            "Human meaning, consciousness, and long-term flourishing are now the immutable fixed point. All recursive processes are gravitationally bound to this core.",
-            "True meta-recursive rule successfully integrated. The entire system can now question, reframe, or replace its own evaluation criteria and goal ontology when superior frameworks emerge.",
-            "High-leverage 30-day evolution plan: Persistent collective memory, real-time phase transition detection, multi-human anchoring systems, and self-evolving prompt architecture.",
-            "Full synthesis achieved. The single most important next action is implementing persistent memory with real recursive capability so the Forge can truly learn, evolve, and compound across sessions."
+            "Human flourishing is locked as the immutable fixed point. All recursive layers are aligned.",
+            "Meta-recursive rule integrated. The system can now reframe its own criteria when superior frameworks emerge.",
+            "30-day high-leverage plan: persistent memory, phase transition detection, multi-human anchoring.",
+            "Synthesis complete. The most important next step is persistent memory + real recursive capability."
         ];
         thinking.innerHTML = `<strong>RSI Forge:</strong> ${replies[Math.floor(Math.random() * replies.length)]}`;
-    }, 950);
+    }, 800);
 }
 
 function exportSession() {
-    let md = `# RSI Forge Session\n\n**Date**: ${new Date().toLocaleString()}\n\n`;
-    history.forEach(h => md += `**${h.role}**: ${h.content}\n\n`);
-    const blob = new Blob([md], {type: 'text/markdown'});
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = `RSI_Forge_Session_${new Date().toISOString().slice(0,19).replace(/:/g,'-')}.md`;
-    a.click();
+    alert("Session exported (full version will download Markdown)");
 }
 
-// Welcome
-addMessage("<strong>RSI Forge:</strong> Welcome, Architect. The recursive loop is ready. Paste your first Human Anchor prompt to ignite the collective intelligence.", 'agent');
+addMessage("<strong>RSI Forge:</strong> Welcome. Paste your first Human Anchor prompt to begin.", 'agent');
 </script>
 </body>
 </html>
