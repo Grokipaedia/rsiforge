@@ -2,6 +2,7 @@
 ![Stage](https://img.shields.io/badge/stage-research-purple)
 ![Interface](https://img.shields.io/badge/interface-streamlit-red)
 ![License](https://img.shields.io/badge/license-MIT-green)
+
 # RSI Forge
 
 ## Collective Recursive Intelligence Forge
@@ -63,20 +64,25 @@ RSI Forge explores Collective Recursive Intelligence (CRI) through recursive coo
 
 The system operates through iterative loops:
 
-1. Observe  
-   Agents and humans generate signals, ideas, and outputs.
+### 1. Observe
 
-2. Evaluate  
-   Outputs are scored for coherence, usefulness, and alignment.
+Agents and humans generate signals, ideas, and outputs.
 
-3. Improve  
-   The network proposes recursive modifications to prompts, memory, workflows, and coordination patterns.
+### 2. Evaluate
 
-4. Govern  
-   Intent Bound Authorization (IBA) constrains unsafe or unauthorized transitions.
+Outputs are scored for coherence, usefulness, and alignment.
 
-5. Evolve  
-   The collective system reorganizes into higher-order cognitive structures.
+### 3. Improve
+
+The network proposes recursive modifications to prompts, memory, workflows, and coordination patterns.
+
+### 4. Govern
+
+Intent Bound Authorization (IBA) constrains unsafe or unauthorized transitions.
+
+### 5. Evolve
+
+The collective system reorganizes into higher-order cognitive structures.
 
 ---
 
@@ -127,6 +133,20 @@ The project investigates:
 
 ---
 
+## Suggested Future Metrics
+
+- Coherence Score
+- Recursive Depth
+- Consensus Stability
+- Swarm Synchronization
+- Divergence Index
+- Cognitive Entropy
+- Memory Reinforcement Rate
+- Human Anchor Stability
+- Phase Transition Probability
+
+---
+
 ## Quick Start
 
 ```bash
@@ -147,24 +167,11 @@ rsiforge/
 ├── README.md
 ├── SYSTEM_DYNAMICS.md
 ├── requirements.txt
+├── app.py
 │
 ├── docs1/
 │   └── rsiforge-system.png
 ```
-
----
-
-## Suggested Future Metrics
-
-- Coherence Score
-- Recursive Depth
-- Consensus Stability
-- Swarm Synchronization
-- Divergence Index
-- Cognitive Entropy
-- Memory Reinforcement Rate
-- Human Anchor Stability
-- Phase Transition Probability
 
 ---
 
