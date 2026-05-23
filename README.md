@@ -35,7 +35,24 @@ Hybrid recursive intelligence may surpass isolated superintelligence through coh
 See [SYSTEM_DYNAMICS.md](SYSTEM_DYNAMICS.md)
 
 ---
+---
 
+## Interface Status
+
+The RSI Forge interface and recursive visualization systems are currently under active development.
+
+Early prototypes focus on:
+
+- Recursive coordination loops
+- Hybrid human-agent cognition
+- Coherence metrics
+- Swarm visualization
+- Recursive memory graphs
+- Cognitive phase transition monitoring
+
+The goal is to create an observable experimental environment for Collective Recursive Intelligence (CRI).
+
+---
 ## Core Thesis
 
 RSI Forge explores the hypothesis that recursively coordinated human-AI systems may evolve capabilities unavailable to isolated intelligence systems alone.
