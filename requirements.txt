@@ -1,6 +1,6 @@
 streamlit
-networkx
-numpy
-pandas
-plotly
 openai
+flask
+flask-cors
+requests
+python-dotenv
