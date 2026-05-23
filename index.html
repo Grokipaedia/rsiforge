@@ -327,8 +327,29 @@ function renderDone() {
       <div class="hist-text">${r.human.replace(/</g,'&lt;')}</div>
     </div>`;
   });
-  h+=`<div style="display:flex;justify-content:center;padding:8px 0;"><button class="btn-ghost" onclick="restart()">⟳ NEW LOOP</button></div>`;
+  h+=`<div style="display:flex;justify-content:center;gap:12px;padding:8px 0;">
+    <button class="btn-ghost" onclick="restart()">⟳ NEW LOOP</button>
+    <button class="btn-red" onclick="saveSession()">⬇ SAVE SESSION</button>
+  </div>`;
   html(h);
+}
+
+function saveSession() {
+  const ts = new Date().toISOString().slice(0,19).replace('T',' ');
+  let txt = `RSI FORGE — SESSION EXPORT\n${ts}\n${'='.repeat(60)}\n\nPROBLEM: ${S.problem}\n\n`;
+  S.history.forEach((r,ri) => {
+    txt += `${'='.repeat(60)}\nROUND ${ri+1}\n${'='.repeat(60)}\n\n`;
+    r.agents.forEach((a,ai) => {
+      const fb = a.feedback ? (a.feedback==='good'?'👍':'👎') : '';
+      txt += `--- ${AGENTS[ai].name} (${AGENTS[ai].role}) ${fb} ---\n${a.response}\n\n`;
+    });
+    if (r.human) txt += `--- HUMAN ANCHOR ---\n${r.human}\n\n`;
+  });
+  const blob = new Blob([txt], {type:'text/plain'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `rsiforge-session-${Date.now()}.txt`;
+  a.click();
 }
 
 async function runAgents() {
