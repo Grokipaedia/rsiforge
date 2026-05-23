@@ -4,42 +4,44 @@
 <meta charset="UTF-8">
 <title>RSI Forge — Collective Recursive Intelligence</title>
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600&display=swap');
     
-    body { 
-        margin: 0; padding: 0; background: #0a0a14; color: #e0e0ff;
+    body {
+        margin: 0; padding: 0; background: #05050f; color: #e0e0ff;
         font-family: 'Inter', system-ui, sans-serif;
     }
     .forge {
-        max-width: 960px; margin: 40px auto; background: #111118;
-        border-radius: 20px; overflow: hidden; box-shadow: 0 20px 80px rgba(255,77,77,0.18);
-        border: 1px solid #ff4d4d22;
+        max-width: 960px; margin: 40px auto; background: #0c0c18;
+        border-radius: 24px; overflow: hidden; box-shadow: 0 30px 100px rgba(255,77,77,0.25);
+        border: 1px solid #ff4d4d33;
     }
     .header {
-        background: linear-gradient(90deg, #1a1a2e, #0f0f23); padding: 24px 36px;
+        background: linear-gradient(90deg, #1a1a2e, #0f0f23); padding: 28px 40px;
         display: flex; align-items: center; justify-content: space-between;
     }
     .title {
-        display: flex; align-items: center; gap: 14px; font-size: 28px; font-weight: 700; color: #ff4d4d;
+        display: flex; align-items: center; gap: 16px; font-family: 'Space Grotesk', sans-serif;
+        font-size: 32px; font-weight: 700; color: #ff4d4d; letter-spacing: -0.02em;
     }
     .chat {
-        height: 560px; overflow-y: auto; padding: 32px; background: #0a0a14; line-height: 1.7;
+        height: 580px; overflow-y: auto; padding: 36px; background: #0a0a14;
+        line-height: 1.75;
     }
     .message {
-        margin: 22px 0; padding: 18px 24px; border-radius: 14px; max-width: 82%;
+        margin: 24px 0; padding: 20px 26px; border-radius: 16px; max-width: 82%;
     }
-    .human { background: #2f2f5f; margin-left: auto; border-bottom-right-radius: 4px; }
-    .agent { background: #1a1a2e; border-left: 5px solid #ff4d4d; }
+    .human { background: #2f2f5f; margin-left: auto; border-bottom-right-radius: 6px; }
+    .agent { background: #1a1a2e; border-left: 6px solid #ff4d4d; }
     .input-area {
-        padding: 28px; background: #111118; border-top: 1px solid #ff4d4d22;
+        padding: 32px; background: #111118; border-top: 1px solid #ff4d4d22;
     }
     textarea {
-        width: 100%; height: 130px; background: #1a1a2e; color: #eee; 
-        border: 1px solid #444466; border-radius: 12px; padding: 18px; font-size: 15.5px;
+        width: 100%; height: 140px; background: #1a1a2e; color: #eee; 
+        border: 1px solid #444466; border-radius: 14px; padding: 20px; font-size: 16px;
     }
     button {
-        background: #ff4d4d; color: white; padding: 14px 32px; border: none;
-        border-radius: 10px; cursor: pointer; font-weight: 600; margin: 8px 8px 8px 0;
+        background: #ff4d4d; color: white; padding: 16px 36px; border: none;
+        border-radius: 12px; cursor: pointer; font-weight: 600; font-size: 16px; margin: 8px 8px 8px 0;
     }
 </style>
 </head>
@@ -47,7 +49,7 @@
 <div class="forge">
     <div class="header">
         <div class="title">🔥 RSI Forge</div>
-        <div style="color:#4caf50;">● Live • Agents Online</div>
+        <div style="color:#4caf50; font-size:15px;">● Live • Collective Online</div>
     </div>
 
     <div class="chat" id="chat"></div>
@@ -79,14 +81,14 @@ function sendMessage() {
     addMessage(`<strong>You:</strong> ${text}`, 'human');
     input.value = "";
 
-    const thinking = addMessage("<strong>RSI Forge:</strong> Processing anchor through recursive layers...", 'agent');
+    const thinking = addMessage("<strong>RSI Forge:</strong> Aligning with human anchor across recursive layers...", 'agent');
 
     setTimeout(() => {
         const replies = [
-            "Human meaning, consciousness, and long-term flourishing are now the immutable fixed point. All recursive processes are aligned to this core.",
-            "True meta-recursive rule integrated. The system can now question, reframe, or replace its own evaluation criteria and goal ontology when superior frameworks emerge.",
-            "High-leverage 30-day evolution plan: Persistent collective memory, real-time phase transition detection, multi-human anchoring, and self-evolving architecture.",
-            "Full synthesis achieved. The single most important next step is implementing persistent memory with real LLM integration so the Forge can truly learn and evolve."
+            "Human meaning, consciousness, and long-term flourishing are now the immutable fixed point. All recursive processes are gravitationally bound to this core.",
+            "True meta-recursive rule successfully integrated. The entire system can now question, reframe, or replace its own evaluation criteria and goal ontology when superior frameworks emerge.",
+            "High-leverage 30-day evolution plan: Persistent collective memory, real-time phase transition detection, multi-human anchoring systems, and self-evolving prompt architecture.",
+            "Full synthesis achieved. The single most important next action is implementing persistent memory with real recursive capability so the Forge can truly learn, evolve, and compound across sessions."
         ];
         thinking.innerHTML = `<strong>RSI Forge:</strong> ${replies[Math.floor(Math.random() * replies.length)]}`;
     }, 950);
@@ -103,7 +105,7 @@ function exportSession() {
 }
 
 // Welcome
-addMessage("<strong>RSI Forge:</strong> Welcome. The recursive loop is active. Paste your first Human Anchor prompt to begin.", 'agent');
+addMessage("<strong>RSI Forge:</strong> Welcome, Architect. The recursive loop is ready. Paste your first Human Anchor prompt to ignite the collective intelligence.", 'agent');
 </script>
 </body>
 </html>
