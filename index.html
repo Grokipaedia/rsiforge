@@ -4,29 +4,37 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>🔥 RSI Forge — Collective Recursive Intelligence</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:#07071a;min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:24px 16px;font-family:'Courier New',monospace;}
-#rsi-root{background:#0f0f23;color:#ddddff;width:100%;max-width:780px;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 12px 48px #00000077;}
-/* HEADER */
-.rsi-hdr{background:#0a0a1a;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #2a2a4a;}
-.rsi-hdr-left{display:flex;align-items:center;gap:10px;}
-.rsi-flame{width:34px;height:34px;background:#ff4d4d;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 0 12px #ff4d4d44;}
-.rsi-title{font-size:15px;font-weight:700;color:#ff4d4d;letter-spacing:.05em;}
-.rsi-sub{font-size:9px;color:#7777aa;letter-spacing:.07em;text-transform:uppercase;margin-top:2px;}
-.rsi-badge{font-size:10px;color:#7777aa;background:#1a1a2e;border:1px solid #2a2a4a;border-radius:6px;padding:4px 10px;letter-spacing:.04em;}
-.rsi-badge.active{color:#4cff8f;border-color:#4cff8f44;background:#0a1f14;}
-/* BODY */
+.rsi{background:#0f0f23;color:#ddddff;width:100%;max-width:780px;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 12px 48px #00000077;}
+.rsi-header{background:#0a0a1a;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #2a2a4a;}
+.rsi-title-group{display:flex;align-items:center;gap:12px;}
+.rsi-flame-box{width:36px;height:36px;background:#ff4d4d;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 0 12px #ff4d4d44;}
+.rsi-name{font-size:15px;font-weight:700;color:#ff4d4d;letter-spacing:.05em;}
+.rsi-tagline{font-size:9px;color:#7777aa;letter-spacing:.07em;text-transform:uppercase;margin-top:2px;}
+.rsi-dot{width:7px;height:7px;border-radius:50%;background:#4caf50;animation:blink 2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.rsi-status{display:flex;align-items:center;gap:7px;font-size:11px;color:#8888aa;}
 .rsi-body{padding:18px;display:flex;flex-direction:column;gap:14px;}
-/* SETUP */
-.setup-card{background:#13132a;border:1px solid #2a2a4a;border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:14px;}
-.setup-label{font-size:10px;color:#8888aa;letter-spacing:.07em;text-transform:uppercase;margin-bottom:5px;}
-.setup-ta{width:100%;background:#0f0f23;color:#eeeeff;border:1px solid #3a3a5a;border-radius:8px;padding:10px 12px;font-family:'Courier New',monospace;font-size:12px;line-height:1.65;min-height:80px;resize:vertical;outline:none;}
-.setup-ta:focus{border-color:#ff4d4d66;box-shadow:0 0 0 2px #ff4d4d11;}
-.setup-input{width:100%;background:#0f0f23;color:#eeeeff;border:1px solid #3a3a5a;border-radius:8px;padding:9px 12px;font-family:'Courier New',monospace;font-size:12px;outline:none;}
-.setup-input:focus{border-color:#ff4d4d66;}
-.setup-input::placeholder{color:#444466;}
-.setup-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+
+/* KEY SETUP */
+.key-card{background:#13132a;border:1px solid #2a2a4a;border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:10px;}
+.key-label{font-size:10px;color:#8888aa;letter-spacing:.07em;text-transform:uppercase;margin-bottom:4px;}
+.key-row{display:flex;gap:8px;}
+.key-input{flex:1;background:#0f0f23;color:#eeeeff;border:1px solid #3a3a5a;border-radius:8px;padding:9px 12px;font-family:'Courier New',monospace;font-size:12px;outline:none;}
+.key-input:focus{border-color:#ff4d4d66;}
+.key-input::placeholder{color:#444466;}
+.key-info{font-size:10px;color:#555580;line-height:1.65;}
+.key-info a{color:#7799dd;}
+.free-tag{display:inline-block;background:#0a1f14;color:#4cff8f;border:1px solid #4cff8f44;border-radius:4px;padding:1px 5px;font-size:9px;margin-left:4px;}
+
+/* PROBLEM */
+.prob-card{background:#13132a;border:1px solid #2a2a4a;border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:10px;}
+.prob-ta{width:100%;background:#0f0f23;color:#eeeeff;border:1px solid #3a3a5a;border-radius:8px;padding:10px 12px;font-family:'Courier New',monospace;font-size:12px;line-height:1.65;min-height:80px;resize:vertical;outline:none;}
+.prob-ta:focus{border-color:#ff4d4d66;}
+.prob-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
 .toggle-wrap{display:flex;align-items:center;gap:8px;cursor:pointer;user-select:none;}
 .toggle-track{width:36px;height:20px;background:#1a1a2e;border:1px solid #3a3a5a;border-radius:10px;position:relative;transition:.2s;flex-shrink:0;}
 .toggle-track.on{background:#ff4d4d33;border-color:#ff4d4d66;}
@@ -36,30 +44,33 @@ body{background:#07071a;min-height:100vh;display:flex;align-items:flex-start;jus
 .toggle-label.on{color:#ff4d4d;}
 .rounds-row{display:flex;align-items:center;gap:8px;}
 .rounds-label{font-size:11px;color:#7777aa;}
-.rounds-select{background:#0f0f23;color:#ddddff;border:1px solid #3a3a5a;border-radius:6px;padding:4px 8px;font-family:'Courier New',monospace;font-size:11px;outline:none;cursor:pointer;}
-.btn-primary{background:#ff4d4d;color:#fff;border:none;border-radius:8px;padding:10px 24px;font-family:'Courier New',monospace;font-size:13px;font-weight:700;cursor:pointer;letter-spacing:.04em;transition:opacity .15s,transform .1s;box-shadow:0 0 14px #ff4d4d44;}
-.btn-primary:hover{opacity:.85;}
-.btn-primary:active{transform:scale(.96);}
-.btn-primary:disabled{opacity:.3;cursor:default;box-shadow:none;}
-.btn-secondary{background:transparent;color:#8888aa;border:1px solid #3a3a5a;border-radius:8px;padding:8px 18px;font-family:'Courier New',monospace;font-size:12px;cursor:pointer;transition:all .15s;}
-.btn-secondary:hover{color:#ddddff;border-color:#5a5a8a;}
-/* ROUND HEADER */
+.rounds-sel{background:#0f0f23;color:#ddddff;border:1px solid #3a3a5a;border-radius:6px;padding:4px 8px;font-family:'Courier New',monospace;font-size:11px;outline:none;cursor:pointer;}
+
+/* BUTTONS */
+.btn-red{background:#ff4d4d;color:#fff;border:none;border-radius:8px;padding:10px 22px;font-family:'Courier New',monospace;font-size:13px;font-weight:700;cursor:pointer;letter-spacing:.04em;box-shadow:0 0 14px #ff4d4d44;transition:opacity .15s,transform .1s;}
+.btn-red:hover{opacity:.85;}
+.btn-red:active{transform:scale(.96);}
+.btn-red:disabled{opacity:.3;cursor:default;box-shadow:none;}
+.btn-ghost{background:transparent;color:#8888aa;border:1px solid #3a3a5a;border-radius:8px;padding:8px 16px;font-family:'Courier New',monospace;font-size:12px;cursor:pointer;transition:all .15s;}
+.btn-ghost:hover{color:#ddddff;border-color:#5a5a8a;}
+
+/* ROUND */
 .round-hdr{display:flex;align-items:center;gap:10px;padding:6px 0;}
 .round-num{font-size:11px;color:#ff4d4d;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;}
-.round-divider{flex:1;height:1px;background:linear-gradient(90deg,#ff4d4d33,transparent);}
-.round-mode{font-size:10px;color:#555580;letter-spacing:.04em;white-space:nowrap;}
+.round-div{flex:1;height:1px;background:linear-gradient(90deg,#ff4d4d33,transparent);}
+
 /* AGENT CARDS */
 .agent-card{border-radius:10px;overflow:hidden;border:1px solid #2a2a4a;transition:border-color .3s;}
-.agent-card-hdr{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid #2a2a4a;}
+.agent-hdr{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid #2a2a4a;}
 .agent-info{display:flex;align-items:center;gap:8px;}
 .agent-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;}
 .agent-name{font-size:12px;font-weight:700;letter-spacing:.04em;}
 .agent-role{font-size:10px;color:#7777aa;margin-top:1px;}
-.agent-feedback{display:flex;gap:6px;align-items:center;}
-.fb-btn{width:28px;height:28px;border-radius:6px;border:1px solid #3a3a5a;background:#13132a;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;transition:all .15s;}
-.fb-btn:hover{background:#1e1e3a;}
-.fb-btn.good{background:#0a1f14;border-color:#4cff8f55;box-shadow:0 0 6px #4cff8f22;}
-.fb-btn.bad{background:#1f0a0a;border-color:#ff4d4d55;box-shadow:0 0 6px #ff4d4d22;}
+.agent-fbs{display:flex;gap:6px;}
+.fb{width:28px;height:28px;border-radius:6px;border:1px solid #3a3a5a;background:#13132a;cursor:pointer;font-size:13px;transition:all .15s;}
+.fb:hover{background:#1e1e3a;}
+.fb.good{background:#0a1f14;border-color:#4cff8f55;}
+.fb.bad{background:#1f0a0a;border-color:#ff4d4d55;}
 .agent-body{padding:14px 16px;font-size:12px;line-height:1.8;color:#ccccee;background:#0f0f1e;white-space:pre-wrap;word-break:break-word;}
 .agent-loading{padding:16px;display:flex;align-items:center;gap:10px;background:#0f0f1e;}
 .dots{display:flex;gap:4px;}
@@ -67,69 +78,58 @@ body{background:#07071a;min-height:100vh;display:flex;align-items:flex-start;jus
 .dots span:nth-child(2){animation-delay:.15s;}
 .dots span:nth-child(3){animation-delay:.3s;}
 @keyframes bdot{0%,60%,100%{transform:translateY(0);}30%{transform:translateY(-5px);}}
-.loading-txt{font-size:11px;color:#555580;letter-spacing:.04em;}
-.layer-tag{display:inline;font-size:10px;color:#ff8844;font-weight:700;}
-/* HUMAN SECTION */
-.human-section{background:#13132a;border:1px solid #3a3a4a;border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:10px;}
-.human-hdr{display:flex;align-items:center;gap:8px;}
-.human-icon{width:24px;height:24px;background:#1a1a40;border:1px solid #4a4a8a55;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;}
+.loading-txt{font-size:11px;color:#555580;}
+
+/* HUMAN */
+.human-card{background:#13132a;border:1px solid #3a3a4a;border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:10px;}
 .human-lbl{font-size:10px;color:#aaaadd;letter-spacing:.07em;text-transform:uppercase;}
-.human-ta{width:100%;background:#0a0a1a;color:#eeeeff;border:1px solid #3a3a5a;border-radius:8px;padding:10px 12px;font-family:'Courier New',monospace;font-size:12px;line-height:1.65;min-height:72px;resize:vertical;outline:none;}
+.human-ta{width:100%;background:#0a0a1a;color:#eeeeff;border:1px solid #3a3a5a;border-radius:8px;padding:10px 12px;font-family:'Courier New',monospace;font-size:12px;line-height:1.65;min-height:70px;resize:vertical;outline:none;}
 .human-ta:focus{border-color:#4a4aaa88;}
 .human-ta::placeholder{color:#444466;}
 .human-row{display:flex;align-items:center;justify-content:space-between;}
 .human-hint{font-size:10px;color:#555580;}
-/* HISTORY */
-.history-block{background:#0a0a1a;border:1px solid #2a2a4a;border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:6px;}
-.history-actor{font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;}
-.history-text{font-size:11px;color:#aaaacc;line-height:1.7;}
+
 /* DONE */
 .done-banner{text-align:center;padding:20px;background:#0a1a0a;border:1px solid #4cff8f33;border-radius:10px;}
 .done-banner h2{color:#4cff8f;font-size:16px;letter-spacing:.06em;}
 .done-banner p{font-size:11px;color:#7777aa;margin-top:8px;}
-/* ANIM */
+.hist-block{background:#0a0a1a;border:1px solid #2a2a4a;border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:6px;}
+.hist-actor{font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;}
+.hist-text{font-size:11px;color:#aaaacc;line-height:1.7;}
+
 @keyframes fadein{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
 .fadein{animation:fadein .22s ease-out;}
-/* KEY INFO */
-.key-info{font-size:10px;color:#555580;line-height:1.6;background:#0a0a18;border:1px solid #2a2a3a;border-radius:6px;padding:8px 10px;}
-.key-info a{color:#7777cc;}
 </style>
 </head>
 <body>
-<div id="rsi-root">
-  <div class="rsi-hdr">
-    <div class="rsi-hdr-left">
-      <div class="rsi-flame">🔥</div>
+<div class="rsi">
+  <div class="rsi-header">
+    <div class="rsi-title-group">
+      <div class="rsi-flame-box">🔥</div>
       <div>
-        <div class="rsi-title">RSI FORGE</div>
-        <div class="rsi-sub">Collective Recursive Intelligence · Human in the Loop</div>
+        <div class="rsi-name">RSI FORGE</div>
+        <div class="rsi-tagline">Collective Recursive Intelligence · Human in the Loop</div>
       </div>
     </div>
-    <div id="rsi-badge" class="rsi-badge">SETUP</div>
+    <div class="rsi-status"><div class="rsi-dot"></div> agents online</div>
   </div>
   <div class="rsi-body" id="rsi-body"></div>
 </div>
 
 <script>
 const AGENTS = [
-  {
-    id:'sigma', name:'Agent SIGMA', role:'Systems Architect', icon:'⬡', color:'#4a9eff',
+  { id:'sigma', name:'Agent SIGMA', role:'Systems Architect', icon:'⬡', color:'#4a9eff',
     persona:`You are Agent SIGMA in RSI Forge — a Collective Recursive Intelligence engine where humans anchor multi-agent loops toward phase transitions.
 Your archetype: Structural systems thinker. Map architectures, identify leverage points, redesign foundations from first principles.
-Write 2–3 focused paragraphs. Be specific, concrete, and actionable.`
-  },
-  {
-    id:'delta', name:'Agent DELTA', role:'Radical Disruptor', icon:'△', color:'#ff6b35',
+Write 2–3 focused paragraphs. Be specific, concrete, and actionable.` },
+  { id:'delta', name:'Agent DELTA', role:'Radical Disruptor', icon:'△', color:'#ff6b35',
     persona:`You are Agent DELTA in RSI Forge — a Collective Recursive Intelligence engine where humans anchor multi-agent loops toward phase transitions.
 Your archetype: Radical disruptor. Challenge every assumption. Identify what must be destroyed or abandoned. Propose the discontinuous leap.
-Write 2–3 focused paragraphs. Be bold, provocative, and visionary.`
-  },
-  {
-    id:'phi', name:'Agent PHI', role:'Emergent Synthesizer', icon:'φ', color:'#cc66ff',
+Write 2–3 focused paragraphs. Be bold, provocative, and visionary.` },
+  { id:'phi', name:'Agent PHI', role:'Emergent Synthesizer', icon:'φ', color:'#cc66ff',
     persona:`You are Agent PHI in RSI Forge — a Collective Recursive Intelligence engine where humans anchor multi-agent loops toward phase transitions.
-Your archetype: Emergent synthesizer. Read what SIGMA and DELTA proposed and discover the hidden third path that neither could reach alone. Look for the unexpected fusion.
-Write 2–3 focused paragraphs. Be integrative, surprising, and generative.`
-  }
+Your archetype: Emergent synthesizer. Read what SIGMA and DELTA proposed and discover the hidden third path that neither could reach alone.
+Write 2–3 focused paragraphs. Be integrative, surprising, and generative.` },
 ];
 
 const RSI_LAYERS = `
@@ -138,326 +138,225 @@ const RSI_LAYERS = `
 [Layer 2 — Bold Improvement]: Propose something that enables emergent redesign and infinite ascent.
 Label your layers explicitly. Think fractally. Push toward phase transitions.`;
 
-let state = {
-  apiKey: '',
-  phase: 'setup',
+let S = {
+  key: localStorage.getItem('groq_key') || '',
   problem: 'How should we evolve RSI Forge itself in the next 30 days so it becomes a true Collective Recursive Intelligence platform — and what is the first irreversible step?',
-  recursiveSI: true,
-  maxRounds: 3,
-  round: 0,
-  rounds: [],
-  agentsThisRound: [],
-  agentIdx: -1
+  rsi: true, rounds: 3, round: 0,
+  history: [], agents: [], agentIdx: -1, phase: 'setup'
 };
 
-// ── API ──────────────────────────────────────────────────────────────────
-async function callClaude(prompt) {
-  const res = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': state.apiKey,
-      'anthropic-version': '2023-06-01',
-      'anthropic-dangerous-direct-browser-access': 'true'
-    },
-    body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 1000,
-      messages: [{ role: 'user', content: prompt }]
-    })
+async function callGroq(prompt) {
+  const r = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':'Bearer '+S.key},
+    body: JSON.stringify({ model:'llama-3.3-70b-versatile', max_tokens:1000, temperature:0.82,
+      messages:[{role:'user',content:prompt}] })
   });
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({}));
-    throw new Error(err.error?.message || `HTTP ${res.status}`);
-  }
-  const data = await res.json();
-  return data.content[0].text;
+  const d = await r.json();
+  if (!r.ok) throw new Error(d.error?.message || 'API error');
+  return d.choices[0].message.content;
 }
 
-// ── PROMPTS ──────────────────────────────────────────────────────────────
-function getPriorOutput() {
-  if (state.rounds.length === 0) return state.problem;
-  const last = state.rounds[state.rounds.length - 1];
-  return last.human || last.agents.map(a => a.response).join('\n\n');
+function getPrior() {
+  if (!S.history.length) return S.problem;
+  const last = S.history[S.history.length-1];
+  return last.human || last.agents.map(a=>a.response).join('\n\n');
 }
 
-function buildPrompt(agentIdx) {
-  const a = AGENTS[agentIdx];
-  const prior = getPriorOutput();
-  let context = '';
-  if (agentIdx === 2) {
-    const s = state.agentsThisRound[0]?.response || '';
-    const d = state.agentsThisRound[1]?.response || '';
-    context = `\nAgent SIGMA proposed:\n${s}\n\nAgent DELTA proposed:\n${d}`;
-  } else {
-    context = `\nCurrent best output to improve upon:\n${prior}`;
-  }
-  const instruction = state.recursiveSI
-    ? `\nRound ${state.round} — RECURSIVE SI MODE:\n${RSI_LAYERS}`
-    : `\nRound ${state.round}: Make a powerful recursive improvement. Think meta-recursively.`;
-  return `${a.persona}\n\nProblem: ${state.problem}\n${context}\n${instruction}`;
+function buildPrompt(idx) {
+  const a = AGENTS[idx];
+  const ctx = idx===2
+    ? `\nAgent SIGMA:\n${S.agents[0]?.response||''}\n\nAgent DELTA:\n${S.agents[1]?.response||''}`
+    : `\nCurrent best output:\n${getPrior()}`;
+  const instr = S.rsi ? `\nRound ${S.round} — RECURSIVE SI MODE:\n${RSI_LAYERS}` : `\nRound ${S.round}: Make a powerful recursive improvement.`;
+  return `${a.persona}\n\nProblem: ${S.problem}\n${ctx}\n${instr}`;
 }
 
-// ── RENDER ────────────────────────────────────────────────────────────────
-function setBodyHTML(html) {
-  document.getElementById('rsi-body').innerHTML = html;
-}
-function setBadge(text, active) {
-  const b = document.getElementById('rsi-badge');
-  b.textContent = text;
-  b.className = 'rsi-badge' + (active ? ' active' : '');
-}
+const body = () => document.getElementById('rsi-body');
+function html(h) { body().innerHTML = h; }
 
 function render() {
-  if (state.phase === 'setup') renderSetup();
-  else if (state.phase === 'loop') renderLoopFull();
+  if (S.phase==='setup') renderSetup();
+  else if (S.phase==='loop') renderLoop();
   else renderDone();
 }
 
-// SETUP
 function renderSetup() {
-  setBadge('SETUP', false);
-  setBodyHTML(`
-  <div class="setup-card fadein">
+  html(`
+  <div class="key-card fadein">
     <div>
-      <div class="setup-label">Anthropic API Key</div>
-      <input class="setup-input" id="api-key-input" type="password" placeholder="sk-ant-..." value="${state.apiKey}" autocomplete="off">
-      <div class="key-info" style="margin-top:6px;">
-        Get your key at <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a>.
-        Your key stays in memory only — never stored or sent anywhere except the Anthropic API.
+      <div class="key-label">Groq API Key <span class="free-tag">FREE</span></div>
+      <div class="key-row">
+        <input class="key-input" id="key-in" type="password" placeholder="gsk_..." value="${S.key}" spellcheck="false">
+      </div>
+      <div class="key-info" style="margin-top:8px;">
+        Free key at <a href="https://console.groq.com" target="_blank">console.groq.com</a> → API Keys → Create. No credit card. Key saved in your browser.
       </div>
     </div>
+  </div>
+  <div class="prob-card fadein">
     <div>
-      <div class="setup-label">Main Problem / Initial Human Anchor</div>
-      <textarea class="setup-ta" id="prob-ta" rows="4">${state.problem}</textarea>
+      <div class="key-label">Problem / Human Anchor</div>
+      <textarea class="prob-ta" id="prob-ta" rows="3">${S.problem}</textarea>
     </div>
-    <div class="setup-row">
-      <div class="toggle-wrap" id="toggle-wrap">
-        <div class="toggle-track ${state.recursiveSI?'on':''}" id="toggle-track"><div class="toggle-thumb"></div></div>
-        <div class="toggle-label ${state.recursiveSI?'on':''}" id="toggle-label">Recursive SI Mode ${state.recursiveSI?'ON':'OFF'}</div>
+    <div class="prob-row">
+      <div class="toggle-wrap" id="tog">
+        <div class="toggle-track ${S.rsi?'on':''}" id="tog-track"><div class="toggle-thumb"></div></div>
+        <div class="toggle-label ${S.rsi?'on':''}" id="tog-lbl">Recursive SI ${S.rsi?'ON':'OFF'}</div>
       </div>
       <div class="rounds-row">
         <span class="rounds-label">Rounds:</span>
-        <select class="rounds-select" id="rounds-sel">
-          ${[2,3,4,6].map(n=>`<option value="${n}"${n===state.maxRounds?' selected':''}>${n}</option>`).join('')}
+        <select class="rounds-sel" id="rounds-sel">
+          ${[2,3,4,6].map(n=>`<option value="${n}"${n===S.rounds?' selected':''}>${n}</option>`).join('')}
         </select>
       </div>
-    </div>
-    <div style="display:flex;justify-content:flex-end;">
-      <button class="btn-primary" id="start-btn">⚡ START FORGE LOOP</button>
+      <button class="btn-red" id="start-btn">⚡ START FORGE</button>
     </div>
   </div>`);
 
-  document.getElementById('api-key-input').addEventListener('input', e => state.apiKey = e.target.value.trim());
-  document.getElementById('prob-ta').addEventListener('input', e => state.problem = e.target.value);
-  document.getElementById('toggle-wrap').addEventListener('click', () => {
-    state.recursiveSI = !state.recursiveSI;
-    document.getElementById('toggle-track').className = 'toggle-track' + (state.recursiveSI?' on':'');
-    const lbl = document.getElementById('toggle-label');
-    lbl.className = 'toggle-label' + (state.recursiveSI?' on':'');
-    lbl.textContent = 'Recursive SI Mode ' + (state.recursiveSI?'ON':'OFF');
+  document.getElementById('key-in').addEventListener('input', e => { S.key=e.target.value.trim(); localStorage.setItem('groq_key',S.key); });
+  document.getElementById('prob-ta').addEventListener('input', e => S.problem=e.target.value);
+  document.getElementById('tog').addEventListener('click', () => {
+    S.rsi=!S.rsi;
+    document.getElementById('tog-track').className='toggle-track'+(S.rsi?' on':'');
+    const l=document.getElementById('tog-lbl'); l.className='toggle-label'+(S.rsi?' on':''); l.textContent='Recursive SI '+(S.rsi?'ON':'OFF');
   });
-  document.getElementById('rounds-sel').addEventListener('change', e => state.maxRounds = parseInt(e.target.value));
+  document.getElementById('rounds-sel').addEventListener('change', e => S.rounds=parseInt(e.target.value));
   document.getElementById('start-btn').addEventListener('click', startLoop);
 }
 
-// LOOP — full re-render
-function renderLoopFull() {
-  setBadge(`ROUND ${state.round} / ${state.maxRounds}`, true);
-  const modeTag = state.recursiveSI ? '<span style="color:#ff4d4d;font-size:10px;white-space:nowrap;">⟳ RECURSIVE SI</span>' : '';
-  let html = `<div class="round-hdr fadein">
-    <span class="round-num">ROUND ${state.round}</span>
-    <div class="round-divider"></div>
-    ${modeTag}
-  </div>`;
-  AGENTS.forEach((a, i) => {
-    html += agentCardHTML(a, i, state.agentsThisRound[i], state.agentIdx === i);
-  });
-  const allDone = state.agentsThisRound.length === 3 && state.agentIdx === -1;
-  if (allDone) html += humanSectionHTML();
-  setBodyHTML(html);
-  bindFeedbackAll();
-  if (allDone) bindHumanSection();
+function renderLoop() {
+  const modeTag = S.rsi?'<span style="color:#ff4d4d;font-size:10px;">⟳ RECURSIVE SI</span>':'';
+  let h = `<div class="round-hdr fadein"><span class="round-num">ROUND ${S.round} / ${S.rounds}</span><div class="round-div"></div>${modeTag}</div>`;
+  AGENTS.forEach((a,i) => h += cardHTML(a,i,S.agents[i],S.agentIdx===i));
+  const done = S.agents.length===3 && S.agentIdx===-1;
+  if (done) h += humanHTML();
+  html(h);
+  bindFB();
+  if (done) bindHuman();
 }
 
-function agentCardHTML(agent, idx, data, isLoading) {
-  const bc = isLoading ? agent.color+'66' : (data ? agent.color+'44' : '#2a2a4a');
+function cardHTML(agent, idx, data, loading) {
+  const bc = loading?agent.color+'66':(data?agent.color+'44':'#2a2a4a');
   const fb = data?.feedback;
-  const feedbackHTML = data ? `<div class="agent-feedback">
-    <button class="fb-btn${fb==='good'?' good':''}" data-agent="${idx}" data-fb="good" title="Good response">👍</button>
-    <button class="fb-btn${fb==='bad'?' bad':''}" data-agent="${idx}" data-fb="bad" title="Needs work">👎</button>
-  </div>` : '';
-  let bodyHTML = '';
-  if (isLoading) {
-    bodyHTML = `<div class="agent-loading">
-      <div class="dots">
-        <span style="background:${agent.color}88"></span>
-        <span style="background:${agent.color}88"></span>
-        <span style="background:${agent.color}88"></span>
-      </div>
-      <span class="loading-txt">${agent.name} is forging response...</span>
-    </div>`;
+  const fbHTML = data?`<div class="agent-fbs">
+    <button class="fb${fb==='good'?' good':''}" data-i="${idx}" data-f="good">👍</button>
+    <button class="fb${fb==='bad'?' bad':''}" data-i="${idx}" data-f="bad">👎</button>
+  </div>`:'';
+  let bodyHTML;
+  if (loading) {
+    bodyHTML=`<div class="agent-loading"><div class="dots"><span style="background:${agent.color}88"></span><span style="background:${agent.color}88"></span><span style="background:${agent.color}88"></span></div><span class="loading-txt">${agent.name} forging...</span></div>`;
   } else if (data) {
-    const txt = data.response
-      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-      .replace(/\[Layer (\d+)[^\]]*\]/g,'<span class="layer-tag">[Layer $1]</span>');
-    bodyHTML = `<div class="agent-body fadein">${txt}</div>`;
+    const txt=data.response.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/\[Layer (\d+)[^\]]*\]/g,'<span style="color:#ff8844;font-weight:700;">[Layer $1]</span>');
+    bodyHTML=`<div class="agent-body fadein">${txt}</div>`;
   } else {
-    bodyHTML = `<div class="agent-loading"><span class="loading-txt" style="color:#222244;">Waiting in queue...</span></div>`;
+    bodyHTML=`<div class="agent-loading"><span class="loading-txt" style="color:#222244;">Waiting...</span></div>`;
   }
-  return `<div class="agent-card fadein" id="agent-card-${idx}" style="border-color:${bc}">
-    <div class="agent-card-hdr" style="background:${agent.color}0d">
+  return `<div class="agent-card fadein" id="ac-${idx}" style="border-color:${bc}">
+    <div class="agent-hdr" style="background:${agent.color}0d">
       <div class="agent-info">
         <div class="agent-icon" style="background:${agent.color}22;color:${agent.color};border:1px solid ${agent.color}44">${agent.icon}</div>
-        <div>
-          <div class="agent-name" style="color:${agent.color}">${agent.name}</div>
-          <div class="agent-role">${agent.role}</div>
-        </div>
-      </div>
-      ${feedbackHTML}
-    </div>
-    ${bodyHTML}
+        <div><div class="agent-name" style="color:${agent.color}">${agent.name}</div><div class="agent-role">${agent.role}</div></div>
+      </div>${fbHTML}
+    </div>${bodyHTML}
   </div>`;
 }
 
-function humanSectionHTML() {
-  const isLast = state.round >= state.maxRounds;
-  return `<div class="human-section fadein" id="human-section">
-    <div class="human-hdr">
-      <div class="human-icon">👤</div>
-      <div class="human-lbl">Human Anchor — Round ${state.round}</div>
-    </div>
-    <textarea class="human-ta" id="human-ta" placeholder="Steer the loop. Agree, redirect, escalate, or inject a wild card. Your input becomes the recursive seed for the next round..." rows="3"></textarea>
+function humanHTML() {
+  const last = S.round>=S.rounds;
+  return `<div class="human-card fadein" id="human-card">
+    <div class="human-lbl">👤 Human Anchor — Round ${S.round}</div>
+    <textarea class="human-ta" id="human-ta" placeholder="Steer the loop. Your input seeds the next round..." rows="3"></textarea>
     <div class="human-row">
       <span class="human-hint">Your anchor guides the next agent round.</span>
-      <button class="btn-primary" id="next-btn">${isLast ? '🏁 COMPLETE LOOP' : '▶ NEXT ROUND'}</button>
+      <button class="btn-red" id="next-btn">${last?'🏁 COMPLETE':'▶ NEXT ROUND'}</button>
     </div>
   </div>`;
 }
 
-function bindFeedbackAll() {
-  document.querySelectorAll('.fb-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const ai = parseInt(btn.dataset.agent);
-      const fb = btn.dataset.fb;
-      if (state.agentsThisRound[ai]) {
-        state.agentsThisRound[ai].feedback = state.agentsThisRound[ai].feedback === fb ? null : fb;
-        refreshAgentCard(ai);
-      }
-    });
-  });
+function bindFB() {
+  document.querySelectorAll('.fb').forEach(b => b.addEventListener('click', () => {
+    const i=parseInt(b.dataset.i), f=b.dataset.f;
+    if (S.agents[i]) { S.agents[i].feedback = S.agents[i].feedback===f?null:f; refreshCard(i); }
+  }));
 }
 
-function bindHumanSection() {
+function bindHuman() {
   document.getElementById('next-btn').addEventListener('click', () => {
-    const human = (document.getElementById('human-ta').value || '').trim();
-    state.rounds.push({ agents: [...state.agentsThisRound], human });
-    const isLast = state.round >= state.maxRounds;
-    if (isLast) { state.phase = 'done'; render(); }
-    else {
-      state.agentsThisRound = []; state.agentIdx = -1; state.round++;
-      render(); runAgents();
-      document.getElementById('rsi-body').scrollTop = 0;
-    }
+    const h=(document.getElementById('human-ta').value||'').trim();
+    S.history.push({agents:[...S.agents],human:h});
+    if (S.round>=S.rounds) { S.phase='done'; render(); }
+    else { S.agents=[]; S.agentIdx=-1; S.round++; render(); runAgents(); body().scrollTop=0; }
   });
 }
 
-function refreshAgentCard(idx) {
-  const card = document.getElementById(`agent-card-${idx}`);
+function refreshCard(idx) {
+  const card=document.getElementById(`ac-${idx}`);
   if (!card) return;
-  const dummy = document.createElement('div');
-  dummy.innerHTML = agentCardHTML(AGENTS[idx], idx, state.agentsThisRound[idx], state.agentIdx === idx);
-  const newCard = dummy.firstElementChild;
-  card.replaceWith(newCard);
-  newCard.querySelectorAll('.fb-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const ai = parseInt(btn.dataset.agent);
-      const fb = btn.dataset.fb;
-      if (state.agentsThisRound[ai]) {
-        state.agentsThisRound[ai].feedback = state.agentsThisRound[ai].feedback === fb ? null : fb;
-        refreshAgentCard(ai);
-      }
-    });
-  });
+  const d=document.createElement('div');
+  d.innerHTML=cardHTML(AGENTS[idx],idx,S.agents[idx],S.agentIdx===idx);
+  card.replaceWith(d.firstElementChild);
+  document.querySelectorAll(`.fb[data-i="${idx}"]`).forEach(b => b.addEventListener('click', () => {
+    const i=parseInt(b.dataset.i),f=b.dataset.f;
+    if (S.agents[i]) { S.agents[i].feedback=S.agents[i].feedback===f?null:f; refreshCard(i); }
+  }));
 }
 
-// DONE
+function appendHuman() {
+  const b=body(); const d=document.createElement('div'); d.innerHTML=humanHTML();
+  b.appendChild(d.firstElementChild); b.scrollTop=b.scrollHeight; bindHuman();
+}
+
 function renderDone() {
-  setBadge('COMPLETE', true);
-  let html = `<div class="done-banner fadein">
-    <h2>🏁 LOOP COMPLETE — ${state.rounds.length} ROUNDS FORGED</h2>
-    <p>The recursive cycle is sealed. Full session history below.</p>
-  </div>`;
-  state.rounds.forEach((r, ri) => {
-    html += `<div class="round-hdr fadein"><span class="round-num">ROUND ${ri+1}</span><div class="round-divider"></div></div>`;
-    r.agents.forEach((a, ai) => {
-      const agent = AGENTS[ai];
-      const fbTag = a.feedback ? (a.feedback==='good' ? ' 👍' : ' 👎') : '';
-      const preview = a.response.substring(0,500) + (a.response.length>500?'…':'');
-      html += `<div class="history-block fadein">
-        <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;">
-          <div style="width:20px;height:20px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;background:${agent.color}22;color:${agent.color};border:1px solid ${agent.color}44;flex-shrink:0">${agent.icon}</div>
-          <span class="history-actor" style="color:${agent.color}">${agent.name}${fbTag}</span>
+  let h=`<div class="done-banner fadein"><h2>🏁 LOOP COMPLETE — ${S.history.length} ROUNDS FORGED</h2><p>Full session history below.</p></div>`;
+  S.history.forEach((r,ri) => {
+    h+=`<div class="round-hdr fadein"><span class="round-num">ROUND ${ri+1}</span><div class="round-div"></div></div>`;
+    r.agents.forEach((a,ai) => {
+      const ag=AGENTS[ai], fb=a.feedback?(a.feedback==='good'?' 👍':' 👎'):'';
+      h+=`<div class="hist-block fadein">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;">
+          <div style="width:20px;height:20px;border-radius:4px;background:${ag.color}22;color:${ag.color};border:1px solid ${ag.color}44;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0">${ag.icon}</div>
+          <span class="hist-actor" style="color:${ag.color}">${ag.name}${fb}</span>
         </div>
-        <div class="history-text">${preview.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
+        <div class="hist-text">${(a.response||'').substring(0,500).replace(/</g,'&lt;')}${(a.response||'').length>500?'…':''}</div>
       </div>`;
     });
-    if (r.human) {
-      html += `<div class="history-block fadein" style="border-color:#4a4a8a55">
-        <div class="history-actor" style="color:#aaaadd;margin-bottom:6px;">👤 HUMAN ANCHOR</div>
-        <div class="history-text">${r.human.replace(/</g,'&lt;')}</div>
-      </div>`;
-    }
+    if (r.human) h+=`<div class="hist-block fadein" style="border-color:#4a4a8a55">
+      <div class="hist-actor" style="color:#aaaadd;margin-bottom:5px;">👤 HUMAN ANCHOR</div>
+      <div class="hist-text">${r.human.replace(/</g,'&lt;')}</div>
+    </div>`;
   });
-  html += `<div style="display:flex;justify-content:center;padding:8px 0;">
-    <button class="btn-secondary" onclick="restartForge()">⟳ NEW LOOP</button>
-  </div>`;
-  setBodyHTML(html);
+  h+=`<div style="display:flex;justify-content:center;padding:8px 0;"><button class="btn-ghost" onclick="restart()">⟳ NEW LOOP</button></div>`;
+  html(h);
 }
 
-// ── AGENT RUNNER ──────────────────────────────────────────────────────────
 async function runAgents() {
-  for (let i = 0; i < 3; i++) {
-    state.agentIdx = i;
-    refreshAgentCard(i);
+  for (let i=0;i<3;i++) {
+    S.agentIdx=i; refreshCard(i);
     try {
-      const response = await callClaude(buildPrompt(i));
-      state.agentsThisRound[i] = { name: AGENTS[i].name, response, feedback: null };
+      S.agents[i]={name:AGENTS[i].name, response: await callGroq(buildPrompt(i)), feedback:null};
     } catch(e) {
-      state.agentsThisRound[i] = {
-        name: AGENTS[i].name,
-        response: `[Error] ${AGENTS[i].name} could not reach the inference layer.\n\nReason: ${e.message}\n\nCheck your API key and try again.`,
-        feedback: null
-      };
+      S.agents[i]={name:AGENTS[i].name, response:`Error: ${e.message}`, feedback:null};
     }
-    state.agentIdx = -1;
-    refreshAgentCard(i);
-    await new Promise(r => setTimeout(r, 100));
+    S.agentIdx=-1; refreshCard(i);
+    await new Promise(r=>setTimeout(r,80));
   }
-  // Add human section
-  const body = document.getElementById('rsi-body');
-  const dummy = document.createElement('div');
-  dummy.innerHTML = humanSectionHTML();
-  body.appendChild(dummy.firstElementChild);
-  body.scrollTop = body.scrollHeight;
-  bindHumanSection();
+  appendHuman();
 }
 
-async function startLoop() {
-  const keyEl = document.getElementById('api-key-input');
-  state.apiKey = (keyEl ? keyEl.value.trim() : state.apiKey);
-  if (!state.apiKey) { alert('Please enter your Anthropic API key.'); return; }
-  state.problem = (document.getElementById('prob-ta').value || state.problem).trim();
-  state.round = 1; state.rounds = []; state.agentsThisRound = []; state.agentIdx = -1;
-  state.phase = 'loop';
-  render();
-  runAgents();
+function startLoop() {
+  S.key=(document.getElementById('key-in').value||'').trim();
+  if (!S.key) { alert('Paste your Groq key first.\n\nGet one free at console.groq.com'); return; }
+  if (!S.key.startsWith('gsk_')) { alert('That doesn\'t look right — Groq keys start with gsk_'); return; }
+  localStorage.setItem('groq_key',S.key);
+  S.problem=(document.getElementById('prob-ta').value||S.problem).trim();
+  S.round=1; S.history=[]; S.agents=[]; S.agentIdx=-1; S.phase='loop';
+  render(); runAgents();
 }
 
-function restartForge() {
-  state.phase = 'setup'; state.round = 0; state.rounds = [];
-  state.agentsThisRound = []; state.agentIdx = -1;
-  render();
+function restart() {
+  S.phase='setup'; S.round=0; S.history=[]; S.agents=[]; S.agentIdx=-1; render();
 }
 
 render();
