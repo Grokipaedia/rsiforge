@@ -3,7 +3,9 @@
 ## Collective Recursive Intelligence Forge
 
 The public testbed for post-RSI intelligence.
+## Architecture
 
+![RSI Forge Architecture](docs/rsiforge-architecture.png)
 MRI → CRI → Cognitive Phase Transitions
 
 RSI Forge is an experimental framework for orchestrating recursive improvement loops across humans, agents, memory systems, and governance constraints.
