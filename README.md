@@ -109,4 +109,4 @@ collective recursive intelligence may represent a post-RSI evolutionary pathway 
 
 ---
 
-rsiforge.com — deployed
+RSIForge.com — deployed
