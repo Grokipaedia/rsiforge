@@ -111,7 +111,10 @@ body{background:#07071a;min-height:100vh;display:flex;align-items:flex-start;jus
         <div class="rsi-tagline">Collective Recursive Intelligence · Human in the Loop</div>
       </div>
     </div>
-    <div class="rsi-status"><div class="rsi-dot"></div> agents online</div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <button class="btn-ghost" id="save-btn" onclick="saveSession()" style="font-size:10px;padding:5px 10px;display:none;">⬇ SAVE</button>
+      <div class="rsi-status"><div class="rsi-dot"></div> agents online</div>
+    </div>
   </div>
   <div class="rsi-body" id="rsi-body"></div>
 </div>
@@ -374,6 +377,7 @@ function startLoop() {
   S.problem=(document.getElementById('prob-ta').value||S.problem).trim();
   S.round=1; S.history=[]; S.agents=[]; S.agentIdx=-1; S.phase='loop';
   render(); runAgents();
+  const sb=document.getElementById('save-btn'); if(sb) sb.style.display='block';
 }
 
 function restart() {
