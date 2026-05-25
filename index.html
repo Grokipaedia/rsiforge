@@ -142,17 +142,17 @@ const RSI_LAYERS = `
 Label your layers explicitly. Think fractally. Push toward phase transitions.`;
 
 let S = {
-  key: localStorage.getItem('together_key') || '',
+  key: localStorage.getItem('groq_key') || '',
   problem: 'How should we evolve RSI Forge itself in the next 30 days so it becomes a true Collective Recursive Intelligence platform — and what is the first irreversible step?',
   rsi: true, rounds: 3, round: 0,
   history: [], agents: [], agentIdx: -1, phase: 'setup'
 };
 
-async function callTogether(prompt) {
-  const r = await fetch('https://api.together.xyz/v1/chat/completions', {
+async function callGroq(prompt) {
+  const r = await fetch('https://api.groq.com/openai/v1/chat/completions', {
     method:'POST',
     headers:{'Content-Type':'application/json','Authorization':'Bearer '+S.key},
-    body: JSON.stringify({ model:'meta-llama/Llama-3.3-70B-Instruct-Turbo', max_tokens:1000, temperature:0.82,
+    body: JSON.stringify({ model:'llama-3.3-70b-versatile', max_tokens:1000, temperature:0.82,
       messages:[{role:'user',content:prompt}] })
   });
   const d = await r.json();
@@ -188,12 +188,12 @@ function renderSetup() {
   html(`
   <div class="key-card fadein">
     <div>
-      <div class="key-label">Together AI API Key <span class="free-tag">PAID</span></div>
+      <div class="key-label">Groq API Key <span class="free-tag">FREE</span></div>
       <div class="key-row">
-        <input class="key-input" id="key-in" type="password" placeholder="tgp..." value="${S.key}" spellcheck="false">
+        <input class="key-input" id="key-in" type="password" placeholder="gsk_..." value="${S.key}" spellcheck="false">
       </div>
       <div class="key-info" style="margin-top:8px;">
-        Get key at <a href="https://api.together.xyz" target="_blank">api.together.xyz</a> → API Keys. Key saved in your browser.
+        Free key at <a href="https://console.groq.com" target="_blank">console.groq.com</a> → API Keys → Create. No credit card. Key saved in your browser.
       </div>
     </div>
   </div>
@@ -217,7 +217,7 @@ function renderSetup() {
     </div>
   </div>`);
 
-  document.getElementById('key-in').addEventListener('input', e => { S.key=e.target.value.trim(); localStorage.setItem('together_key',S.key); });
+  document.getElementById('key-in').addEventListener('input', e => { S.key=e.target.value.trim(); localStorage.setItem('groq_key',S.key); });
   document.getElementById('prob-ta').addEventListener('input', e => S.problem=e.target.value);
   document.getElementById('tog').addEventListener('click', () => {
     S.rsi=!S.rsi;
@@ -359,7 +359,7 @@ async function runAgents() {
   for (let i=0;i<3;i++) {
     S.agentIdx=i; refreshCard(i);
     try {
-      S.agents[i]={name:AGENTS[i].name, response: await callTogether(buildPrompt(i)), feedback:null};
+      S.agents[i]={name:AGENTS[i].name, response: await callGroq(buildPrompt(i)), feedback:null};
     } catch(e) {
       S.agents[i]={name:AGENTS[i].name, response:`Error: ${e.message}`, feedback:null};
     }
@@ -371,11 +371,13 @@ async function runAgents() {
 
 function startLoop() {
   S.key=(document.getElementById('key-in').value||'').trim();
-  if (!S.key) { alert('Paste your Together AI key first.'); return; }
-  localStorage.setItem('together_key',S.key);
+  if (!S.key) { alert('Paste your Groq key first.\n\nGet one free at console.groq.com'); return; }
+  if (!S.key.startsWith('gsk_')) { alert('That doesn\'t look right — Groq keys start with gsk_'); return; }
+  localStorage.setItem('groq_key',S.key);
   S.problem=(document.getElementById('prob-ta').value||S.problem).trim();
   S.round=1; S.history=[]; S.agents=[]; S.agentIdx=-1; S.phase='loop';
   render(); runAgents();
+  const sb=document.getElementById('save-btn'); if(sb) sb.style.display='block';
 }
 
 function restart() {
