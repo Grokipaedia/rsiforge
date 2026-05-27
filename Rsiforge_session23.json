@@ -1,0 +1,51 @@
+{
+  "problem": "Pythagorean 3-body \u2014 proving the operating model",
+  "session_number": 23,
+  "timestamp": "2026-05-27T08:02:22.654499",
+  "baseline": {
+    "steps": 2142,
+    "final_energy_error": 0.01022260173614239
+  },
+  "results": [
+    {
+      "agent": "PHI",
+      "formula": "dt = (d^-1.3)*(1+d^-0.5) with N=floor(d^-0.8) sub-steps",
+      "parameters": {
+        "alpha": 1.3,
+        "beta": 1.0,
+        "gamma": 0.5,
+        "delta": 0.8
+      },
+      "committed": {
+        "steps": 50000
+      },
+      "actual": {
+        "steps": 335679,
+        "final_energy_error": 0.010569762551865335
+      },
+      "met_commit": true,
+      "beat_baseline": true,
+      "runtime": 20.28
+    },
+    {
+      "agent": "SIGMA",
+      "formula": "dt = (d^-0.9)/(1+0.6*d^-1.1) with N=floor(d^-0.5) sub-steps",
+      "parameters": {
+        "alpha": 0.9,
+        "beta": 0.6,
+        "gamma": 1.1,
+        "delta": 0.5
+      },
+      "committed": {
+        "steps": 53219
+      },
+      "actual": {
+        "steps": 193923,
+        "final_energy_error": 0.014945708547094623
+      },
+      "met_commit": true,
+      "beat_baseline": true,
+      "runtime": 11.53
+    }
+  ]
+}
