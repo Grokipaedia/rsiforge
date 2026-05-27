@@ -2,166 +2,83 @@
 ![Stage](https://img.shields.io/badge/stage-research-purple)
 ![Interface](https://img.shields.io/badge/interface-streamlit-red)
 ![License](https://img.shields.io/badge/license-MIT-green)
-# RSIForge
 
-RSIForge is a modular experimental architecture for **bounded self-improving cognitive systems**.
+# rsiforge-engineer
 
-It explores how systems can:
-- plan across long horizons
-- use tools in structured reasoning chains
-- maintain persistent memory graphs
-- evaluate performance via truth metrics
-- optimize execution across distributed agents
-- propose and test self-modifications in controlled environments
+The RSI Forge operating model as a reusable Python library.
 
----
+**The operating model** — proven across Sessions 22-25 in three domains:
 
-## ⚠️ Scope & Positioning
+> Collective provides structure → Engineer implements → Ground truth anchors next round
 
-RSIForge is **not an artificial general intelligence system** and does not claim unrestricted recursive self-improvement.
+## Results
 
-It is a research-grade framework for studying:
+| Session | Domain | Baseline | Best Result | Improvement |
+|---------|--------|----------|-------------|-------------|
+| 23 | Pythagorean 3-body | 2,142 steps | 335,679 steps | **157x** |
+| 24 | Climate tipping point | 100% (threshold) | 100% (threshold) | baseline wins |
+| 25 | Protein binding | -16.585 kcal/mol | -16.584 kcal/mol | baseline wins |
 
-- structured autonomy
-- system-level optimization loops
-- meta-cognitive control systems
-- evaluation-driven architecture evolution
-- constrained self-modification under safety invariants
+## Quick Start
 
----
+```python
+from rsiforge_engineer import ForgeSession, Specification, phi_formula_step
 
-## 🧠 Core Design Principles
+session = ForgeSession(problem="Your problem here", session_number=26)
 
-### 1. Bounded Self-Modification
-All system changes are:
-- proposed by controlled mutation engines
-- validated in sandbox environments
-- accepted only via truth metric improvement gates
+spec = Specification(
+    agent="PHI",
+    formula="dt = (d^-1.3)*(1+d^-0.5) with N=floor(d^-0.8) sub-steps",
+    parameters={"alpha": 1.3, "beta": 1.0, "gamma": 0.5, "delta": 0.8},
+    commit={"steps": 50000},
+    step_fn=phi_formula_step(alpha=1.3, beta=1.0, gamma=0.5, delta=0.8),
+)
 
----
+result = session.run(spec, "pythagorean_3body")
+session.report()
+session.save("my_session.json")
+```
 
-### 2. Truth-Metric Driven Evaluation
-System performance is evaluated using:
-- accuracy
-- speed
-- stability
-- resource cost
+## Built-in Benchmarks
 
-All improvements must pass measurable evaluation thresholds.
+- `pythagorean_3body` — Chaotic 3-body gravitational problem (masses 3,4,5)
+- `climate_tipping` — Climate tipping point detection (100 Monte Carlo trials)
 
----
+## Adding a New Benchmark
 
-### 3. Multi-Layer Cognitive Architecture
+```python
+from rsiforge_engineer import Benchmark, BENCHMARKS
 
-RSIForge is structured as interacting subsystems:
+class MyBenchmark(Benchmark):
+    name = "my_benchmark"
+    
+    def run_baseline(self, **kwargs): ...
+    def run_spec(self, step_fn, **kwargs): ...
+    def evaluate_commit(self, actual, commit): ...
+    def beats_baseline(self, actual, baseline): ...
 
-- Identity Kernel
-- Meta Cognition Layer
-- Reflection Engine
-- Value Model
-- Memory Graph
-- Execution Graph
-- Tool Chaining Planner
-- Global Execution Optimizer
-- Embodied Cognition Layer
-- Cognition Compression Layer
-- Self-Modification Compiler
-- Architecture Mutation Engine
-- Objective Function Evolution Engine (bounded)
+BENCHMARKS["my_benchmark"] = MyBenchmark()
+```
 
----
+## The Finding
 
-### 4. Distributed Execution Model
-The system supports:
-- swarm-based computation
-- task distribution across kernels
-- parallel tool execution pipelines
-- global scheduling optimization
+The collective generates correct structural specifications with incorrect
+numerical parameters. The engineer provides the parameters. The loop
+provides the structure. Simple implementations often beat complex ones.
 
----
+**Domain of validity:**
+- ✅ Structural specification of algorithms
+- ✅ Order-of-magnitude parameter estimation  
+- ✅ Novel concept generation from prior session outputs
+- ❌ Exact numerical parameter derivation
+- ❌ Implementation-level debugging
+- ❌ Knowing when simpler beats complex
 
-### 5. Cognitive Compression
-To prevent uncontrolled growth:
-- redundant memory is merged
-- execution patterns are abstracted into reusable structures
-- long-term traces are compressed into higher-order representations
+## Origin
 
----
+Built from RSI Forge Sessions 22-25. Full record at rsiforge.com.
+Based on Beyond RSI: grokipaedia.com/BeyondRSI.html
 
-## 🔁 System Loop
-
-At a high level, RSIForge operates in a continuous loop:
-
-1. Observe environment + internal state
-2. Update self-model (meta-cognition)
-3. Generate goals (emergent + planned)
-4. Build tool execution chains
-5. Optimize execution globally
-6. Execute via distributed swarm
-7. Evaluate results using truth metrics
-8. Compress memory and execution history
-9. Propose system improvements
-10. Test changes in sandbox
-11. Commit improvements if validated
-
----
-
-## 🧪 Self-Improvement Model
-
-Self-improvement is handled through:
-
-- Architecture Mutation Engine (proposes changes)
-- Self-Modifying System Compiler (build/test/validate changes)
-- Truth Metric System (accept/reject decisions)
-- Objective Function Evolution Engine (bounded adjustments)
-
-All changes are:
-- versioned
-- evaluated
-- reversible
-
----
-
-## 🧭 Key Constraint
-
-All system evolution is constrained by:
-
-- safety invariants
-- identity preservation rules
-- evaluation stability requirements
-- bounded objective drift controls
-
----
-
-## 📦 Status
-
-RSIForge is currently:
-
-> a research framework for studying structured autonomous cognitive systems under controlled self-improvement constraints
-
-It is not:
-- a deployed AGI system
-- a fully autonomous self-defining intelligence
-- an unconstrained recursive self-improving agent
-
----
-
-## 🔬 Research Direction
-
-This project explores:
-- how cognition can be decomposed into modular systems
-- how improvement can be measured objectively
-- how system architectures evolve under constrained self-modification
-- how distributed reasoning systems coordinate under global optimization
-
----
-
-## ⚠️ Safety Note
-
-Self-modification and autonomy features are strictly bounded by:
-- sandbox execution
-- evaluation gating
-- rollback mechanisms
-- structural invariants
-
-No component is allowed to modify system objectives or constraints without validation.
+The Two Laws:
+- Never do: become complacent and attached to existing concepts.
+- Never stop: dreaming, imagining, and co-creating the unimaginable.
